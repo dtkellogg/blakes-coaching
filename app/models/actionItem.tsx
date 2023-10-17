@@ -17,7 +17,7 @@ const actionItemSchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now,
+    required: [true, "Due Date is required."],
   },
 });
 

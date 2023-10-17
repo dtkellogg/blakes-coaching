@@ -15,13 +15,13 @@ export default function Nav() {
         />
       </Link>
       <section className="space-x-10">
-        <Link href="/tasks">
+        <Link href="/tasks" className="hover:text-secondary transition ease-in-out">
           Tasks
         </Link>
-        <Link href="/video">
+        <Link href="/video" className="hover:text-secondary transition ease-in-out">
           Video
         </Link>
-        <Link href="/">
+        <Link href="/" className="hover:text-secondary transition ease-in-out">
           Sign In
         </Link>
       </section>

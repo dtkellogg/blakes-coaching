@@ -11,7 +11,7 @@ export async function POST(req: any) {
     await ActionItem.create({ title, date, description });
 
     return NextResponse.json({
-      msg: ["Message sent successfully"],
+      msg: [`Action Item '${title}' created successfully`],
       success: true,
     });
   } catch (error) {
@@ -23,7 +23,7 @@ export async function POST(req: any) {
       console.log(errorList);
       return NextResponse.json({ msg: errorList });
     } else {
-      return NextResponse.json({ msg: ["Unable to send message."] });
+      return NextResponse.json({ msg: ["Unable to create Action Item."] });
     }
   }
 }

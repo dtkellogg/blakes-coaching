@@ -1,6 +1,6 @@
 "use client"
 
-import { redirect, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 export default function CreateActionItemForm() {
@@ -45,10 +45,10 @@ export default function CreateActionItemForm() {
           <textarea id="description" name="description" placeholder="Description" className="input h-32" onChange={(e) => setDescription(e.target.value)} value={description} />
         </div>
         <button
-          className="btn-primary mt-3"
+          className="btn-primary mt-3 hover:opacity-70 transition ease-in-out"
           type="submit"
         >
-            Submit
+          Submit
         </button>
       </form>
 
