@@ -1,11 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Nav() {
   return (
-    <div className="bg-red-500 flex content-center margin-auto">
-      <h1>
-        Nav
-      </h1>
+    <div className="flex items-center justify-between pr-10 margin-auto">
       <Image
         src="/action-manager.svg"
         alt="Vercel Logo"
@@ -14,6 +12,17 @@ export default function Nav() {
         height={24}
         priority
       />
+      <section className="space-x-10">
+        <Link href="/tasks">
+          Tasks
+        </Link>
+        <Link href="/video">
+          Video
+        </Link>
+        <Link href="/signIn">
+          Sign In
+        </Link>
+      </section>
     </div>
   )
 }
