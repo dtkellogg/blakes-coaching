@@ -7,6 +7,8 @@ export default function CreateActionItemForm() {
   const [title, setTitle] = useState('')
   const [date, setDate] = useState('')
   const [description, setDescription] = useState('')
+  const [error, setError] = useState([]);
+  const [success, setSuccess] = useState(false);
   const router = useRouter()
 
   const handleSubmit = async (e: any) => {
@@ -22,11 +24,18 @@ export default function CreateActionItemForm() {
       })
     })
 
-    const { msg } = await res.json()
+    const { msg, success } = await res.json();
+    setError(msg);
+    setSuccess(success);
+
+    if (success) {
+      setTitle("");
+      setDate("");
+      setDescription("");
+      router.push('/')
+    }
 
     console.log(msg)
-
-    router.push('/')
   }
 
   return (
@@ -52,8 +61,18 @@ export default function CreateActionItemForm() {
         </button>
       </form>
 
-      <div>
-        <div>Error Message:</div>
+      <div className="bg-slate-100 flex flex-col">
+        {error &&
+          error.map((e, i) => (
+            <div
+              key={i}
+              className={`${
+                success ? "text-green-800" : "text-red-600"
+              } px-5 py-2`}
+            >
+              {e}
+            </div>
+          ))}
       </div>
     </>
   )
