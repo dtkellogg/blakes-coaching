@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-primary text-white">
         <Nav />
-        <div>
+        <div className="px-4 pb-4">
           {children}
         </div>
       </body>
