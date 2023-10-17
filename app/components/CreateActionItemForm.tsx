@@ -9,12 +9,23 @@ export default function CreateActionItemForm() {
   const [description, setDescription] = useState('')
   const router = useRouter()
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
-    console.log(`title: ${title}`)
-    console.log(`date: ${date}`)
-    console.log(`description: ${description}`)
-    // console.log(`title: ${title}, date: ${date}, description: ${description}`)
+
+    const res = await fetch('api/actionItems', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        title,
+        date,
+        description
+      })
+    })
+
+    const { msg } = await res.json()
+
+    console.log(msg)
+
     router.push('/')
   }
 
@@ -34,7 +45,7 @@ export default function CreateActionItemForm() {
           <textarea id="description" name="description" placeholder="Description" className="input h-32" onChange={(e) => setDescription(e.target.value)} value={description} />
         </div>
         <button
-          className="btn-primary mt-3 w-max"
+          className="btn-primary mt-3"
           type="submit"
         >
             Submit
@@ -43,9 +54,6 @@ export default function CreateActionItemForm() {
 
       <div>
         <div>Error Message:</div>
-        <span>Title: {title}</span>
-        <span>Date: {date}</span>
-        <span>Description: {description}</span>
       </div>
     </>
   )
