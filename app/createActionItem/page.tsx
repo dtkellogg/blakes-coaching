@@ -3,10 +3,9 @@ import CreateActionItemForm from '../components/CreateActionItemForm';
 
 export default function CreateActionItem() {
   return (
-    <main className="">
+    <div className="">
       <h1 className="header-primary">Create Action Item</h1>
-
       <CreateActionItemForm />
-    </main>
+    </div>
   )
 }
