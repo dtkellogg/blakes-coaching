@@ -14,6 +14,14 @@
   .header-primary {
     @apply text-4xl w-max mx-auto
   }
+
+  .input {
+    @apply shadow-md px-6 py-2 border border-slate-300 text-black
+  }
+
+  .label {
+    @apply text-xl
+  }
 }
 
 @layer utilities {

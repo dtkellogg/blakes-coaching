@@ -19,9 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-primary text-white">
         <Nav />
-        <div className="px-4 pb-4">
+        <main className="px-4 pb-4">
           {children}
-        </div>
+        </main>
       </body>
     </html>
   )
