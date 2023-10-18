@@ -1,12 +1,18 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useState } from "react"
 
-export default function CreateActionItemForm() {
-  const [title, setTitle] = useState('')
-  const [deadline, setDeadline] = useState('')
-  const [description, setDescription] = useState('')
+export default function EditActionItemForm() {
+  const searchParams = useSearchParams()
+  const deadlineFromParams = searchParams.get('deadline')
+
+  console.log(new Date(deadlineFromParams).toISOString())
+  console.log(new Date(deadlineFromParams).toISOString().split("T")[0])
+
+  const [title, setTitle] = useState(searchParams.get('title'))
+  const [deadline, setDeadline] = useState(new Date(deadlineFromParams).toISOString().split("T")[0])
+  const [description, setDescription] = useState(searchParams.get('description'))
   const [error, setError] = useState([]);
   const [success, setSuccess] = useState(false);
   const router = useRouter()

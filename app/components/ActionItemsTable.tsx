@@ -56,14 +56,14 @@ export default async function ActionItemsTable() {
         {actionItems && actionItems.map(({ _id, title, deadline, description }: any, i: number) => (
           <tr key={i} className="bg-gray-100 text-black">
             <td className="border border-slate-700">{title}</td>
-            <td className="border border-slate-700">{new Date(`${deadline}`).toDateString()}</td>
+            <td className="border border-slate-700">{new Date(`${deadline}`).toUTCString().split(" 00:")[0]}</td>
             <td className="border border-slate-700">{description}</td>
             <td className="border border-slate-700 flex">
               {/* <button onClick={removeTopic(_id)} className="text-red-400"> */}
                 <TrashIcon className="h-8 w-8 cursor-pointer" style={{color: "red"}} />
               {/* </button> */}
               <span>
-                <Link href={`/tasks/editActionItem/${_id}`}>
+                <Link href={`/tasks/editActionItem/${_id}?title=${title}&deadline=${deadline}&description=${description}`}>
                   <PencilSquareIcon className="h-8 w-8 cursor-pointer" style={{color: "green"}} />
                 </Link>
               </span>
