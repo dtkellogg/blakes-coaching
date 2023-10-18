@@ -1,10 +1,8 @@
-import { TrashIcon } from "@heroicons/react/24/outline";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import DeleteActionItemButton from "./DeleteActionItemButton";
 
 export default async function ActionItemsTable() {
-  // const router = useRouter();
 
   const getActionItems = async () => {
     try {
@@ -21,21 +19,6 @@ export default async function ActionItemsTable() {
       console.log("Error loading Action Items: ", error);
     }
   };
-
-  // const removeTopic = async (id: string) => {
-  //   // const confirmed = confirm("Are you sure?");
-  //   const confirmed = false
-
-  //   if (confirmed) {
-  //     const res = await fetch(`http://localhost:3000/api/actionItems?id=${id}`, {
-  //       method: "DELETE",
-  //     });
-
-  //     if (res.ok) {
-  //       router.refresh();
-  //     }
-  //   }
-  // };
 
   const { actionItems } = await getActionItems()
 
@@ -59,14 +42,10 @@ export default async function ActionItemsTable() {
             <td className="border border-slate-700">{new Date(`${deadline}`).toUTCString().split(" 00:")[0]}</td>
             <td className="border border-slate-700">{description}</td>
             <td className="border border-slate-700 flex">
-              {/* <button onClick={removeTopic(_id)} className="text-red-400"> */}
-                <TrashIcon className="h-8 w-8 cursor-pointer" style={{color: "red"}} />
-              {/* </button> */}
-              <span>
-                <Link href={`/tasks/editActionItem/${_id}?title=${title}&deadline=${deadline}&description=${description}`}>
-                  <PencilSquareIcon className="h-8 w-8 cursor-pointer" style={{color: "green"}} />
-                </Link>
-              </span>
+              <DeleteActionItemButton id={_id} />
+              <Link href={`/tasks/editActionItem/${_id}?title=${title}&deadline=${deadline}&description=${description}`}>
+                <PencilSquareIcon className="h-8 w-8 cursor-pointer" style={{color: "green"}} />
+              </Link>
             </td>
           </tr>
         ))}

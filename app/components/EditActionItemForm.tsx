@@ -7,8 +7,8 @@ export default function EditActionItemForm() {
   const searchParams = useSearchParams()
   const deadlineFromParams = searchParams.get('deadline')
 
-  console.log(new Date(deadlineFromParams).toISOString())
-  console.log(new Date(deadlineFromParams).toISOString().split("T")[0])
+  // console.log(new Date(deadlineFromParams).toISOString())
+  // console.log(new Date(deadlineFromParams).toISOString().split("T")[0])
 
   const [title, setTitle] = useState(searchParams.get('title'))
   const [deadline, setDeadline] = useState(new Date(deadlineFromParams).toISOString().split("T")[0])
