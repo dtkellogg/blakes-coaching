@@ -44,7 +44,7 @@ export default async function ActionItemsTable() {
         Table 1: All Action Items sorted by deadline.
       </caption>
       <thead>
-        <tr>
+        <tr className="bg-gray-400 text-black">
           <th className="border border-slate-600">Title</th>
           <th className="border border-slate-600">Deadline</th>
           <th className="border border-slate-600">Description</th>
@@ -53,7 +53,7 @@ export default async function ActionItemsTable() {
       </thead>
       <tbody>
         {actionItems && actionItems.map((actionItem: any, i: number) => (
-          <tr key={i}>
+          <tr key={i} className="bg-gray-100 text-black">
             <td className="border border-slate-700">{actionItem.title}</td>
             <td className="border border-slate-700">{new Date(`${actionItem.deadline}`).toDateString()}</td>
             <td className="border border-slate-700">{actionItem.description}</td>
