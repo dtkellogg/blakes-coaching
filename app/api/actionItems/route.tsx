@@ -27,3 +27,9 @@ export async function POST(req: any) {
     }
   }
 }
+
+export async function GET(request: any) {
+  await connectDB();
+  const actionItems = await ActionItem.find();
+  return NextResponse.json({ actionItems });
+}

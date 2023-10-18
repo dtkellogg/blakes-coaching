@@ -1,5 +1,5 @@
 import Link from "next/link";
-import CreateActionItemForm from '../components/CreateActionItemForm';
+import CreateActionItemForm from '@/app/components/CreateActionItemForm';
 
 export default function CreateActionItem() {
   return (
