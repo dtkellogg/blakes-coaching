@@ -1,5 +1,6 @@
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default async function ActionItemsTable() {
@@ -52,17 +53,19 @@ export default async function ActionItemsTable() {
         </tr>
       </thead>
       <tbody>
-        {actionItems && actionItems.map((actionItem: any, i: number) => (
+        {actionItems && actionItems.map(({ _id, title, deadline, description }: any, i: number) => (
           <tr key={i} className="bg-gray-100 text-black">
-            <td className="border border-slate-700">{actionItem.title}</td>
-            <td className="border border-slate-700">{new Date(`${actionItem.deadline}`).toDateString()}</td>
-            <td className="border border-slate-700">{actionItem.description}</td>
+            <td className="border border-slate-700">{title}</td>
+            <td className="border border-slate-700">{new Date(`${deadline}`).toDateString()}</td>
+            <td className="border border-slate-700">{description}</td>
             <td className="border border-slate-700 flex">
-              {/* <button onClick={removeTopic(actionItem._id)} className="text-red-400"> */}
+              {/* <button onClick={removeTopic(_id)} className="text-red-400"> */}
                 <TrashIcon className="h-8 w-8 cursor-pointer" style={{color: "red"}} />
               {/* </button> */}
               <span>
-                <PencilSquareIcon className="h-8 w-8 cursor-pointer" style={{color: "green"}} />
+                <Link href={`/tasks/editActionItem/${_id}`}>
+                  <PencilSquareIcon className="h-8 w-8 cursor-pointer" style={{color: "green"}} />
+                </Link>
               </span>
             </td>
           </tr>
