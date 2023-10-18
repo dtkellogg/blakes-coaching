@@ -6,7 +6,7 @@ import Nav from './components/Nav'
 // const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Blake Kami Coaching',
+  title: 'Action Manager - Blake Kami Coaching',
   description: 'Take control of your life with Blake\'s expertise.',
 }
 

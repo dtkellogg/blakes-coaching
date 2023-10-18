@@ -16,27 +16,14 @@ export default async function ActionItemsList() {
     }
   };
 
-  // const getActionItems = async () => {
-  //   const res = await fetch('api/actionItems', {
-  //     method: 'GET',
-  //     headers: { 'Content-Type': 'application/json'}
-  //   })
-  //   return res.json()
-  // }
-
-  // useEffect(() => {
-  //   const actionItems = getActionItems().then(x => { return x.actionItems })
-  //   console.log(actionItems)
-  // }, [])
-
   const { actionItems } = await getActionItems()
 
   return (
     <div>
-      {actionItems && actionItems.map((actionItem: any, i) => (
+      {actionItems && actionItems.map((actionItem: any, i: number) => (
         <div key={i} className="flex justify-between">
           <span>{actionItem.title}</span>
-          <span>{actionItem.date}</span>
+          <span>{new Date(`${actionItem.date}`).toDateString()}</span>
           <span>{actionItem.description}</span>
         </div>
       ))}

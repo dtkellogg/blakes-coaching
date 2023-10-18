@@ -14,7 +14,7 @@ export default function CreateActionItemForm() {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
 
-    const res = await fetch('api/actionItems', {
+    const res = await fetch('../api/actionItems', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({
