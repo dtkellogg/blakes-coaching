@@ -8,7 +8,7 @@ export default function Nav() {
         <Image
           src="/action-manager.svg"
           alt="Action Manager Logo"
-          className="dark:invert"
+          className="dark:invert scale-150 ml-5"
           width={100}
           height={100}
           priority
