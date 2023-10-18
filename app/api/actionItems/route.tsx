@@ -34,3 +34,10 @@ export async function GET(request: any) {
   const actionItems = await ActionItem.find();
   return NextResponse.json({ actionItems });
 }
+
+export async function DELETE(request: any) {
+  const id = request.nextUrl.searchParams.get("id");
+  await connectDB();
+  await ActionItem.findByIdAndDelete(id);
+  return NextResponse.json({ message: "Action Item deleted" }, { status: 200 });
+}
