@@ -40,7 +40,7 @@ export default async function ActionItemsTable() {
   const { actionItems } = await getActionItems()
 
   return (
-    <table className="table-auto border-separate border-spacing-0.5 border border-slate-500">
+    <table className="table-fixed border-separate border-spacing-0.5 border border-slate-500">
       <caption className="caption-bottom">
         Table 1: All Action Items sorted by deadline.
       </caption>
@@ -49,7 +49,7 @@ export default async function ActionItemsTable() {
           <th className="border border-slate-600">Title</th>
           <th className="border border-slate-600">Deadline</th>
           <th className="border border-slate-600">Description</th>
-          <th className="border border-slate-600">Actions</th>
+          <th className="border border-slate-600" style={{width: '30px'}}>Actions</th>
         </tr>
       </thead>
       <tbody>
