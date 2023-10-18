@@ -1,4 +1,4 @@
-import { PencilSquareIcon } from "@heroicons/react/24/outline";
+import { PencilSquareIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import DeleteActionItemButton from "./DeleteActionItemButton";
 
@@ -32,7 +32,7 @@ export default async function ActionItemsTable() {
           <th className="border border-slate-600">Title</th>
           <th className="border border-slate-600">Deadline</th>
           <th className="border border-slate-600">Description</th>
-          <th className="border border-slate-600" style={{width: '30px'}}>Actions</th>
+          <th className="border border-slate-600" style={{width: '100px'}}>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -46,6 +46,7 @@ export default async function ActionItemsTable() {
               <Link href={`/tasks/editActionItem/${_id}?title=${title}&deadline=${deadline}&description=${description}`}>
                 <PencilSquareIcon className="h-8 w-8 cursor-pointer" style={{color: "green"}} />
               </Link>
+              <CheckCircleIcon />
             </td>
           </tr>
         ))}
