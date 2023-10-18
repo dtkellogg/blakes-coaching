@@ -1,3 +1,6 @@
+import { TrashIcon } from "@heroicons/react/24/outline";
+import { PencilSquareIcon } from "@heroicons/react/24/outline";
+
 export default async function ActionItemsTable() {
   const getActionItems = async () => {
     try {
@@ -27,6 +30,7 @@ export default async function ActionItemsTable() {
           <th className="border border-slate-600">Title</th>
           <th className="border border-slate-600">Deadline</th>
           <th className="border border-slate-600">Description</th>
+          <th className="border border-slate-600">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -35,6 +39,14 @@ export default async function ActionItemsTable() {
             <td className="border border-slate-700">{actionItem.title}</td>
             <td className="border border-slate-700">{new Date(`${actionItem.deadline}`).toDateString()}</td>
             <td className="border border-slate-700">{actionItem.description}</td>
+            <td className="border border-slate-700 flex">
+              <span>
+                <TrashIcon className="h-8 w-8 cursor-pointer" style={{color: "red"}} />
+              </span>
+              <span>
+                <PencilSquareIcon className="h-8 w-8 cursor-pointer" style={{color: "green"}} />
+              </span>
+            </td>
           </tr>
         ))}
       </tbody>
