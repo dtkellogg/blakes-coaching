@@ -1,14 +1,12 @@
 "use client"
 
-import { useRouter, useSearchParams } from "next/navigation"
+import { useParams, useRouter, useSearchParams } from "next/navigation"
 import { useState } from "react"
 
 export default function EditActionItemForm() {
+  const params = useParams()
   const searchParams = useSearchParams()
   const deadlineFromParams = searchParams.get('deadline')
-
-  // console.log(new Date(deadlineFromParams).toISOString())
-  // console.log(new Date(deadlineFromParams).toISOString().split("T")[0])
 
   const [title, setTitle] = useState(searchParams.get('title'))
   const [deadline, setDeadline] = useState(new Date(deadlineFromParams).toISOString().split("T")[0])
@@ -20,8 +18,10 @@ export default function EditActionItemForm() {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
 
-    const res = await fetch('../api/actionItems', {
-      method: 'POST',
+    console.log(`tile: ${title}, description: ${description}, deadline: ${new Date(deadline)}`)
+
+    const res = await fetch(`../../api/actionItems/${params.id}`, {
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({
         title,
