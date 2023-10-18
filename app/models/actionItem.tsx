@@ -13,7 +13,7 @@ const actionItemSchema = new Schema({
     required: [true, "Description is required."],
     trim: true,
     minLength: [2, "Description must be larger than 2 characters"],
-    maxLength: [50, "Description must be less than 300 characters"],
+    maxLength: [1000, "Description must be less than 1000 characters"],
   },
   date: {
     type: Date,

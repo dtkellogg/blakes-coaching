@@ -32,7 +32,7 @@ export default function CreateActionItemForm() {
       setTitle("");
       setDate("");
       setDescription("");
-      router.push('/')
+      router.push('/tasks')
     }
 
     console.log(msg)

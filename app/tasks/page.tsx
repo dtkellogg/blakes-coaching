@@ -5,7 +5,7 @@ export default function Tasks() {
 
   return (
     <div className="flex flex-col">
-      <h1 className="header-primary mb-4">Tasks Page</h1>
+      <h1 className="header-primary mb-4">Tasks</h1>
       <ActionItemsList />
       <Link href="/tasks/createActionItem">
         <button className="btn-primary mt-10 w-full">
