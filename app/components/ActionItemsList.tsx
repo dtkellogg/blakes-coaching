@@ -23,7 +23,7 @@ export default async function ActionItemsList() {
       {actionItems && actionItems.map((actionItem: any, i: number) => (
         <div key={i} className="grid grid-cols-3 justify-center">
           <span>{actionItem.title}</span>
-          <span>{new Date(`${actionItem.date}`).toDateString()}</span>
+          <span>{new Date(`${actionItem.deadline}`).toDateString()}</span>
           <span>{actionItem.description}</span>
         </div>
       ))}

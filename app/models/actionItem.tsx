@@ -15,9 +15,9 @@ const actionItemSchema = new Schema({
     minLength: [2, "Description must be larger than 2 characters"],
     maxLength: [1000, "Description must be less than 1000 characters"],
   },
-  date: {
+  deadline: {
     type: Date,
-    required: [true, "Due Date is required."],
+    required: [true, "Deadline is required."],
   },
 });
 

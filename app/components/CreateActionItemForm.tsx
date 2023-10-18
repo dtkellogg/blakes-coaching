@@ -5,7 +5,7 @@ import { useState } from "react"
 
 export default function CreateActionItemForm() {
   const [title, setTitle] = useState('')
-  const [date, setDate] = useState('')
+  const [deadline, setDeadline] = useState('')
   const [description, setDescription] = useState('')
   const [error, setError] = useState([]);
   const [success, setSuccess] = useState(false);
@@ -19,7 +19,7 @@ export default function CreateActionItemForm() {
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({
         title,
-        date,
+        deadline,
         description
       })
     })
@@ -30,7 +30,7 @@ export default function CreateActionItemForm() {
 
     if (success) {
       setTitle("");
-      setDate("");
+      setDeadline("");
       setDescription("");
       router.push('/tasks')
     }
@@ -46,8 +46,8 @@ export default function CreateActionItemForm() {
           <input type="text" id="title" name="title" placeholder="Title" className="input" onChange={(e) => setTitle(e.target.value)} value={title} />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="date" className="label">Due Date:</label>
-          <input type="date" id="date" name="date" placeholder="Due Date" className="input" onChange={(e) => setDate(e.target.value)} value={date} />
+          <label htmlFor="deadline" className="label">Deadline:</label>
+          <input type="date" id="deadline" name="deadline" placeholder="Deadline" className="input" onChange={(e) => setDeadline(e.target.value)} value={deadline} />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="description" className="label">Description:</label>
