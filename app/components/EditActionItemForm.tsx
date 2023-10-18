@@ -12,13 +12,13 @@ export default function EditActionItemForm() {
   const [deadline, setDeadline] = useState(new Date(deadlineFromParams).toISOString().split("T")[0])
   const [description, setDescription] = useState(searchParams.get('description'))
   const [error, setError] = useState([]);
-  const [success, setSuccess] = useState(false);
+  const [status, setStatus] = useState(false);
   const router = useRouter()
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
 
-    console.log(`tile: ${title}, description: ${description}, deadline: ${new Date(deadline)}`)
+    console.log(`tile: ${title}, description: ${description}, deadline: ${new Date(deadline).toISOString()}`)
 
     const res = await fetch(`../../api/actionItems/${params.id}`, {
       method: 'PUT',
@@ -30,11 +30,16 @@ export default function EditActionItemForm() {
       })
     })
 
-    const { msg, success } = await res.json();
+    const res2 = await res.json();
+    const { msg, status } = res2;
     setError(msg);
-    setSuccess(success);
+    setStatus(status);
 
-    if (success) {
+    console.log(res2)
+
+    console.log(`msg: ${msg}, status: ${status}`)
+
+    if (status) {
       setTitle("");
       setDeadline("");
       setDescription("");
@@ -73,7 +78,7 @@ export default function EditActionItemForm() {
             <div
               key={i}
               className={`${
-                success ? "text-green-800" : "text-red-600"
+                status ? "text-green-800" : "text-red-600"
               } px-5 py-2`}
             >
               {e}
