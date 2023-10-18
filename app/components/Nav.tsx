@@ -7,10 +7,10 @@ export default function Nav() {
       <NavLink href="/">
         <Image
           src="/action-manager.svg"
-          alt="Vercel Logo"
+          alt="Action Manager Logo"
           className="dark:invert"
           width={100}
-          height={24}
+          height={100}
           priority
         />
       </NavLink>
