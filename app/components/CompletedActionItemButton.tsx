@@ -33,9 +33,6 @@ export default function CompletedActionItemButton({ id, title, deadline, descrip
   };
 
   return (
-    // <button onClick={() => removeActionItem(id)} className="text-red-400">
-    //   <TrashIcon className="h-8 w-8 cursor-pointer" style={{color: "red"}} />
-    // </button>
     <button onClick={() => toggleCompleted(id)}>
       {
         completed 
