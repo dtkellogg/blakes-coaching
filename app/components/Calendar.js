@@ -1,16 +1,9 @@
 "use client"
 
-import React, { useEffect } from "react"
-// import { useSelector, useDispatch } from "react-redux";
-
-// prop-types
-import PropTypes from "prop-types";
-
-// components
+import React from "react"
 import CalendarBody from "./CalendarBody";
 import CalendarDaysOfWeek from "./CalendarDaysOfWeek";
 import CalendarHeader from './CalendarHeader'
-
 export const  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 function getDaysInMonth(m, y) {
@@ -32,8 +25,6 @@ export const setCalendarDays = (date) => {
 
     const month = date.getMonth(),
       year = date.getFullYear()
-      // { userLogin : { userInfo } } = getState(),
-      // { appointmentList: {loading, error, appointments} } = getState()
       let appointments = []
 
     let daysInThisMonth = getDaysInMonth(month, year),
@@ -42,6 +33,8 @@ export const setCalendarDays = (date) => {
       arrayDaysCurrentMonth = [],
       arrayDaysLastMonth = [],
       arrayDaysNextMonth = []
+
+    // console.log(`daysInThisMonth: ${daysInThisMonth}, daysInLastMonth: ${daysInLastMonth}, daysInLastMonthToShow: ${daysInLastMonthToShow}`)
     
     for (let i = daysInLastMonth; i > daysInLastMonth - daysInLastMonthToShow; i--) {
       arrayDaysLastMonth.unshift({ num: i, month: months[month - 1], year: year, appts: [] })
@@ -52,7 +45,14 @@ export const setCalendarDays = (date) => {
     for (let i = 1; i < daysInThisMonth + 1; i++) {
       arrayDaysCurrentMonth.push({ num: i, month: month, year: year, appts: [] })
     }
-  
+
+    // console.log(`arrayDaysCurrentMonth`)
+    // console.log(arrayDaysCurrentMonth)
+    // console.log(`arrayDaysLastMonth`)
+    // console.log(arrayDaysLastMonth)
+    // console.log(`arrayDaysNextMonth`)
+    // console.log(arrayDaysNextMonth)
+    
     let arrayAllDays = [...arrayDaysLastMonth, ...arrayDaysCurrentMonth, ...arrayDaysNextMonth],
         allDaysWithAppts = []
 
@@ -76,16 +76,15 @@ export const setCalendarDays = (date) => {
     return arrayAllDays
   } catch (error) {
     return error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message
+      ? error.response.data.message
+      : error.message
   }
 }
 
 
-export default function Calendar({ type }) {
+export default function Calendar() {
   const calendarDays = setCalendarDays(new Date())
-
-  console.log(calendarDays)
+  // console.log(calendarDays)
 
   return (
     <div className="bg-white border border-black grid grid-cols-7 grid-rows-[3rem_2rem_repeat(6,_1fr)] mb-10 text-black h-[45rem]">
@@ -94,8 +93,4 @@ export default function Calendar({ type }) {
       <CalendarBody calendarDays={calendarDays}/>
     </div>
   )
-}
-
-Calendar.propTypes = {
-  type: PropTypes.string
 }
