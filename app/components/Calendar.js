@@ -88,7 +88,7 @@ export default function Calendar({ type }) {
   console.log(calendarDays)
 
   return (
-    <div className="bg-white border border-black grid grid-cols-7 grid-rows-[3rem_2rem_repeat(6,_1fr)] mb-10 text-black h-[40rem]">
+    <div className="bg-white border border-black grid grid-cols-7 grid-rows-[3rem_2rem_repeat(6,_1fr)] mb-10 text-black h-[45rem]">
       <CalendarHeader />
       <CalendarDaysOfWeek />
       <CalendarBody calendarDays={calendarDays}/>

@@ -111,7 +111,7 @@ export default function CalendarBody({calendarDays}) {
               return (
                 <li
                   key={uuid()}
-                className="calendar__row--element-with-appts"
+                  className="calendar__row--element-with-appts"
                 >
                   <div style={{ display: "block", alignSelf: "flex-end" }}>
                     {calendarSquare.num}

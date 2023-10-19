@@ -1,5 +1,4 @@
 import React from 'react'
-
 const days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"]
 
 
