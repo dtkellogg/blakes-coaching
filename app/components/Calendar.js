@@ -11,6 +11,17 @@ function AMPMTime(time) {
   return useFormatAMPM(time);
 }
 
+function useFormatAMPM(date) {
+  var hours = date.split(":")[0];
+  var minutes = date.split(":")[1];
+  var ampm = hours >= 12 ? "pm" : "am";
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  var strTime = hours + ":" + minutes + ampm;
+
+  return strTime;
+}
+
 function getDaysInMonth(m, y) {
   // months in JavaScript start at 0 so decrement by 1 e.g. 11 = Dec
   // if month is Sept, Apr, Jun, Nov return 30 days
@@ -24,13 +35,13 @@ function getDaysInMonth(m, y) {
   return 28;
 }
 
-export const makeCalendar = (date) => {
+export const makeCalendar = (date, actionItems) => {
   try {
     date = new Date(date)
 
     const month = date.getMonth(),
       year = date.getFullYear()
-      let appointments = []
+      // let appointments = []
 
     let daysInThisMonth = getDaysInMonth(month, year),
       daysInLastMonth = getDaysInMonth(month - 1, year),
@@ -48,36 +59,35 @@ export const makeCalendar = (date) => {
       arrayDaysNextMonth.push({ num: i, month: months[month + 1], year: year, appts: [] })
     }
     for (let i = 1; i < daysInThisMonth + 1; i++) {
-      arrayDaysCurrentMonth.push({ num: i, month: month, year: year, appts: [] })
+      arrayDaysCurrentMonth.push({ num: i, month: months[month], year: year, appts: [] })
     }
-
-    // console.log(`arrayDaysCurrentMonth`)
-    // console.log(arrayDaysCurrentMonth)
-    // console.log(`arrayDaysLastMonth`)
-    // console.log(arrayDaysLastMonth)
-    // console.log(`arrayDaysNextMonth`)
-    // console.log(arrayDaysNextMonth)
     
     let arrayAllDays = [...arrayDaysLastMonth, ...arrayDaysCurrentMonth, ...arrayDaysNextMonth],
         allDaysWithAppts = []
 
-    // if(userInfo) {
-      arrayAllDays.forEach((calDay) => {
-        appointments
-          .filter((appt) => appt.student === userInfo.name)
-          .forEach((appt) => {
-            const apptDate = appt.date.split("T")[0].split("-");
-            const apptDay = parseInt(apptDate[2]);
-            const apptMonth = months[apptDate[1] - 1];
-  
-            if (apptDay === calDay.num && apptMonth === calDay.month) {
-              calDay.appointments.push(appt);
-            }
-          });
-  
-        allDaysWithAppts.push(calDay);
-      })
-    // }
+    console.log(actionItems)
+
+    arrayAllDays.forEach((calDay) => {
+      actionItems
+        // .filter((item) => item.student === userInfo.name)
+        .forEach((item) => {
+          // console.log(`item`)
+          // console.log(item)
+          const itemDate = item.deadline.split("T")[0].split("-");
+          const itemDay = parseInt(itemDate[2]);
+          const itemMonth = months[itemDate[1] - 1];
+
+          if (itemDay === calDay.num && itemMonth === calDay.month) {
+            // console.log('calDay')
+            // console.log(calDay)
+            calDay.appts.push(item);
+          }
+        });
+      allDaysWithAppts.push(calDay);
+    })
+
+    console.log(arrayAllDays)
+
     return arrayAllDays
   } catch (error) {
     return error.response && error.response.data.message
@@ -87,10 +97,10 @@ export const makeCalendar = (date) => {
 }
 
 
-export default function Calendar() {
+export default function Calendar({ actionItems }) {
   // const calendarDays = makeCalendar(new Date())
   
-  const [calendarDays, setCalendarDays] = useState(makeCalendar(new Date()))
+  const [calendarDays, setCalendarDays] = useState(makeCalendar(new Date(), actionItems))
   const [date, setDate] = useState(new Date())
   const [day, setDay] = useState(new Date().getDate())
   const [month, setMonth] = useState(new Date().getMonth())
@@ -118,7 +128,9 @@ export default function Calendar() {
           ? new Date(year, previousMonth)
           : new Date(year - 1, previousMonth)
       }
-      setCalendarDays(makeCalendar(newDate))
+      console.log('Hello')
+      console.log(actionItems)
+      setCalendarDays(makeCalendar(newDate, actionItems))
       setDate(newDate)
       setMonth(newDate.getMonth())
       setYear(newDate.getFullYear())
@@ -158,13 +170,14 @@ export default function Calendar() {
 
       {/* --- body --- */}
 
-      <ul className="grid grid-cols-7 grid-rows-6 justify-center items-start col-span-full" style={{gridRow: '3/-1'}}>
+      <ul className="grid grid-cols-7 grid-rows-6 justify-center items-start col-span-full border-x-[1px] border-b-[1px] border-black" style={{gridRow: '3/-1'}}>
         {calendarDays.map((calendarSquare) => {
-          if (calendarSquare.month !== month) {
+          if (calendarSquare.month !== months[month]) {
             if (calendarSquare.appts.length !== 0) {
               return (
                 <li
-                  className="calendar__row--element-with-appts text-gray-500"
+                  className="calendar__row--element-with-appts text-gray-500 h-full w-full flex items-start border border-black justify-start flex-col p-1"
+                  style={{borderWidth: '0.5px'}}
                   key={uuid()}
                 >
                   <div
@@ -183,7 +196,8 @@ export default function Calendar() {
                     {calendarSquare.appts.map((appt) => {
                       return (
                         <div key={uuid()}>
-                          <span className="calendar__element--subject">{appt.subject}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)} 
+                          <span className="calendar__element--subject">{appt.title}</span>
+                          {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                         </div>
                       );
                     })}
@@ -202,13 +216,14 @@ export default function Calendar() {
               );
           } else if (
             calendarSquare.num === day &&
-            calendarSquare.month === (new Date()).getMonth() &&
+            calendarSquare.month === months[(new Date()).getMonth()] &&
             calendarSquare.year === year
           ) {
             if (calendarSquare.appts.length !== 0) {
               return (
                 <li
-                  className="calendar__row--element-with-appts text-secondary"
+                  className="calendar__row--element-with-appts text-secondary h-full w-full flex items-start border border-black justify-start flex-col p-1"
+                  style={{borderWidth: '0.5px'}}
                   key={uuid()}
                 >
                   <div
@@ -227,7 +242,8 @@ export default function Calendar() {
                     {calendarSquare.appts.map((appt) => {
                       return (
                         <div key={uuid()} className="calendar__appt">
-                          <span className="calendar__element--subject">{appt.subject}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)} 
+                          <span className="calendar__element--subject">{appt.title}</span>
+                          {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                         </div>
                       );
                     })}
@@ -238,10 +254,12 @@ export default function Calendar() {
               return (
                 <li
                   key={uuid()}
-                  className="h-full w-full flex items-start border border-black justify-end p-1 text-secondary"
+                  className="h-full w-full flex items-start border border-black justify-end p-1"
                   style={{borderWidth: '0.5px'}}
                 >
-                  {calendarSquare.num}
+                  <span className="p-1 text-white bg-secondary rounded-full px-2">
+                    {calendarSquare.num}
+                  </span>
                 </li>
               );
           } else {
@@ -249,7 +267,8 @@ export default function Calendar() {
               return (
                 <li
                   key={uuid()}
-                  className="calendar__row--element-with-appts"
+                  className="calendar__row--element-with-appts h-full w-full flex items-start border border-black justify-start flex-col p-1"
+                  style={{borderWidth: '0.5px'}}
                 >
                   <div style={{ display: "block", alignSelf: "flex-end" }}>
                     {calendarSquare.num}
@@ -261,7 +280,8 @@ export default function Calendar() {
                     {calendarSquare.appts.map((appt) => {
                       return (
                         <div key={uuid()} className="calendar__appt">
-                          <span className="calendar__element--subject">{appt.subject}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)} 
+                          <span className="calendar__element--subject">{appt.title}</span>
+                          {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                         </div>
                       );
                     })}

@@ -4,25 +4,25 @@ import DeleteActionItemButton from "./DeleteActionItemButton";
 import Tooltip from "./Tooltip";
 import CompletedActionItemButton from "./CompletedActionItemButton";
 
-export default async function ActionItemsTable() {
+export default async function ActionItemsTable({ actionItems }) {
 
-  const getActionItems = async () => {
-    try {
-      const res = await fetch("http://localhost:3000/api/actionItems", {
-        cache: "no-store",
-      });
+  // const getActionItems = async () => {
+  //   try {
+  //     const res = await fetch("http://localhost:3000/api/actionItems", {
+  //       cache: "no-store",
+  //     });
 
-      if (!res.ok) {
-        throw new Error("Failed to fetch Action Items");
-      }
+  //     if (!res.ok) {
+  //       throw new Error("Failed to fetch Action Items");
+  //     }
 
-      return res.json();
-    } catch (error) {
-      console.log("Error loading Action Items: ", error);
-    }
-  };
+  //     return res.json();
+  //   } catch (error) {
+  //     console.log("Error loading Action Items: ", error);
+  //   }
+  // };
 
-  const { actionItems } = await getActionItems()
+  // const { actionItems } = await getActionItems()
 
   return (
     <table className="table-fixed border-separate border-spacing-0.5 border border-slate-500">
