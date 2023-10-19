@@ -19,6 +19,10 @@ const actionItemSchema = new Schema({
     type: Date,
     required: [true, "Deadline is required."],
   },
+  completed: {
+    type: Boolean,
+    default: false
+  },
 });
 
 const ActionItem =

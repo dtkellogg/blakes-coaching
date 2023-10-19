@@ -12,11 +12,11 @@ export async function DELETE(request: any) {
 
 export async function PUT(request: any, { params }) {
   const { id } = params;
-  const { title, deadline, description } = await request.json();
-  console.log(`id: ${id}, title: ${title}, description: ${description}, deadline: ${deadline}`)
+  const { title, deadline, description, completed } = await request.json();
+  console.log(`id: ${id}, title: ${title}, description: ${description}, deadline: ${deadline}, completed: ${completed}`);
   try {
     await connectDB();
-    await ActionItem.findByIdAndUpdate(id, { title, deadline, description });
+    await ActionItem.findByIdAndUpdate(id, { title, deadline, description, completed });
     return NextResponse.json({ status: 200 }, { msg: "Action Item updated" });
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {

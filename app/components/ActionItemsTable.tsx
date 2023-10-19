@@ -1,7 +1,8 @@
-import { PencilSquareIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
+import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import DeleteActionItemButton from "./DeleteActionItemButton";
 import Tooltip from "./Tooltip";
+import CompletedActionItemButton from "./CompletedActionItemButton";
 
 export default async function ActionItemsTable() {
 
@@ -37,7 +38,7 @@ export default async function ActionItemsTable() {
         </tr>
       </thead>
       <tbody>
-        {actionItems && actionItems.map(({ _id, title, deadline, description }: any, i: number) => (
+        {actionItems && actionItems.map(({ _id, title, deadline, description, completed }: any, i: number) => (
           <tr key={i} className="bg-gray-100 text-black">
             <td className="border border-slate-700">{title}</td>
             <td className="border border-slate-700">{new Date(`${deadline}`).toUTCString().split(" 00:")[0]}</td>
@@ -52,9 +53,7 @@ export default async function ActionItemsTable() {
                 </Tooltip>
               </Link>
               <Tooltip message={"Mark as Completed"}>
-                <button>
-                  <CheckCircleIcon className="h-8 w-8 cursor-pointer" style={{color: "gold"}} />
-                </button>
+                <CompletedActionItemButton id={_id} title={title} deadline={deadline} description={description} completed={completed} />
               </Tooltip>
             </td>
           </tr>
