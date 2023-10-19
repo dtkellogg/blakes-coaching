@@ -1,22 +1,20 @@
 import React from 'react'
-// import { useSelector } from "react-redux";
-
-// hooks
-// import useFormatAMPM from "../../hooks/useFormatAMPM";
 
 // uuid
-// const { v4: uuid } = require("uuid");
-
+const { v4: uuid } = require("uuid");
 
 function AMPMTime(time) {
   return useFormatAMPM(time);
 }
 
 
-export default function CalendarBody() {
+export default function CalendarBody({calendarDays}) {
   // const { calendarDays } = useSelector((state) => state.calendarDays),
   //   calendarDate = useSelector((state) => state.calendarDate),
     // { date } = calendarDate;
+
+  // const calendarDays = []
+  const date = new Date()
 
   if(calendarDays) {
     const day = date.getDate(),
@@ -24,14 +22,13 @@ export default function CalendarBody() {
       year = date.getFullYear()
         
     return (
-      <ul className="calendar__row--numDays">
+      <ul className="grid grid-cols-7 grid-rows-6 justify-center items-start col-span-full" style={{gridRow: '3/-1'}}>
         {calendarDays.map((calendarSquare) => {
           if (calendarSquare.month !== month) {
             if (calendarSquare.appts.length !== 0) {
               return (
                 <li
-                  className="calendar__row--element-with-appts"
-                  style={{ color: "var(grey-5)" }}
+                  className="calendar__row--element-with-appts text-gray-500"
                   key={uuid()}
                 >
                   <div
@@ -45,10 +42,7 @@ export default function CalendarBody() {
                   </div>
                   <br />
                   <div
-                    className="calendar__row--appt"
-                    style={{
-                      color: "var(--old-blue-2)",
-                    }}
+                    className="calendar__row--appt text-secondary"
                   >
                     {calendarSquare.appts.map((appt) => {
                       return (
@@ -64,8 +58,7 @@ export default function CalendarBody() {
               return (
                 <li
                   key={uuid()}
-                  className="calendar__row--element"
-                  style={{ color: "var(--grey-5)" }}
+                  className="h-full w-full flex items-start border border-black justify-end p-1 text-gray-500"
                 >
                   {calendarSquare.num}
                 </li>
@@ -78,8 +71,7 @@ export default function CalendarBody() {
             if (calendarSquare.appts.length !== 0) {
               return (
                 <li
-                  className="calendar__row--element-with-appts"
-                  style={{ color: "var(--old-blue-2)" }}
+                  className="calendar__row--element-with-appts text-secondary"
                   key={uuid()}
                 >
                   <div
@@ -93,10 +85,7 @@ export default function CalendarBody() {
                   </div>
                   <br />
                   <div
-                    className="calendar__row--appt"
-                    style={{
-                      color: "var(--old-blue-2)",
-                    }}
+                    className="calendar__row--appt text-secondary"
                   >
                     {calendarSquare.appts.map((appt) => {
                       return (
@@ -112,8 +101,7 @@ export default function CalendarBody() {
               return (
                 <li
                   key={uuid()}
-                  className="calendar__row--element"
-                  style={{ color: "var(--old-blue-2)" }}
+                  className="h-full w-full flex items-start border border-black justify-end p-1 text-secondary"
                 >
                   {calendarSquare.num}
                 </li>
@@ -130,10 +118,7 @@ export default function CalendarBody() {
                   </div>
                   <br />
                   <div
-                    className="calendar__row--appt"
-                    style={{
-                      color: "var(--old-blue-2)",
-                    }}
+                    className="calendar__row--appt text-secondary"
                   >
                     {calendarSquare.appts.map((appt) => {
                       return (
@@ -148,8 +133,7 @@ export default function CalendarBody() {
             } else return (
               <li
                 key={uuid()}
-                className="calendar__row--element"
-                style={{ color: "var(--black)" }}
+                className="h-full w-full flex items-start border border-black justify-end p-1 text-black"
               >
                 {calendarSquare.num}
               </li>

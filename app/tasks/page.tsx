@@ -9,7 +9,7 @@ export default function Tasks() {
     <div className="flex flex-col">
       <h1 className="header-primary mb-4">Tasks</h1>
       {/* <ActionItemsList /> */}
-      {/* <Calendar /> */}
+      <Calendar />
       <ActionItemsTable />
       <Link href="/tasks/createActionItem">
         <button className="btn-primary mt-10 w-full">

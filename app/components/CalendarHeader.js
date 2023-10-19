@@ -11,8 +11,36 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 export const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"]
 export const  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
+export const handleChangeCalendarMonth = (type) => async (dispatch, getState) => {
+  try {
+    const { calendarDate: { date } } = getState(),
+      month = date.getMonth(),
+      year = date.getFullYear()
+
+    let newDate = null
+
+    if(type === 'forwards') {
+      let nextMonth = (month === 11) ? 0 : month + 1
+      newDate = month !== 11 
+        ? new Date(year, nextMonth)
+        : new Date(year + 1, nextMonth)
+    } else if(type === 'backwards') {
+      let previousMonth = (month === 0) ? 11 : month - 1
+      newDate = month !== 0 
+        ? new Date(year, previousMonth)
+        : new Date(year - 1, previousMonth)
+    }
+
+    return newDate
+  } catch (error) {
+    return error.response && error.response.data.message
+      ? error.response.data.message
+      : error.message
+  }
+}
 
 export default function CalendarHeader() {
+  
   // const dispatch = useDispatch()
 
   // const calendarDate = useSelector((state) => state.calendarDate);
@@ -36,16 +64,18 @@ export default function CalendarHeader() {
   // }, [date])
 
   return (
-    <div className="calendar__row--header">
-      <ChevronRightIcon
-        size={30}
+    <div className="flex justify-between row-span-1 row-start-1 col-span-full px-32 border border-black text-xl items-center bg-gray-300 ">
+      <ChevronLeftIcon
+        width={35}
+        height={35}
         fill="var(--old-blue-2)"
         className="btn__calendar"
         onClick={() => handleBackwards()}
       />
       <div className="header__calendar">{`${months[month]} ${year}`}</div>
-      <ChevronLeftIcon
-        size={30}
+      <ChevronRightIcon
+        width={35}
+        height={35}
         fill="var(--old-blue-2)"
         className="btn__calendar"
         onClick={() => handleForwards()}

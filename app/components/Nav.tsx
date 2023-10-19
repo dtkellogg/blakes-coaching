@@ -7,11 +7,11 @@ import NavLink from "next/link";
 export default function Nav() {
   const pathname = usePathname()
   const isActive = (path: string) => {
-    console.log(`pathname: ${pathname.split('/')}`)
+    // console.log(`pathname: ${pathname.split('/')}`)
     return pathname?.split('/')[1] === path
   }
 
-  console.log(isActive('tasks'))
+  // console.log(isActive('tasks'))
 
   return (
     <div className="flex items-center justify-between pr-10 margin-auto">
