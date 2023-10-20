@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "mongoose": "^7.6.2",
     "next": "13.5.4",
     "react": "^18",

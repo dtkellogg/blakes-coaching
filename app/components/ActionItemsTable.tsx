@@ -40,9 +40,9 @@ export default async function ActionItemsTable({ actionItems }) {
       <tbody>
         {actionItems && actionItems.map(({ _id, title, deadline, description, completed }: any, i: number) => (
           <tr key={i} className="bg-gray-100 text-black" style={{height: '100%'}}>
-            <td className="border border-slate-700"><Tooltip message={title}>{title}</Tooltip></td>
+            <td className="border border-slate-700"><Tooltip message={title}><span className="line-clamp-1">{title}</span></Tooltip></td>
             <td className="border border-slate-700">{new Date(`${deadline}`).toUTCString().split(" 00:")[0]}</td>
-            <td className="border border-slate-700"><Tooltip message={description}>{description}</Tooltip></td>
+            <td className="border border-slate-700"><Tooltip message={description}><span className="line-clamp-1">{description}</span></Tooltip></td>
             <td className="border border-slate-700 flex" style={{height: '100%'}}>
               <div className="flex">
                 <Tooltip message={"Delete"}>
