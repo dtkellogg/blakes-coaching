@@ -32,7 +32,7 @@ export default async function ActionItemsTable({ actionItems }) {
       <thead>
         <tr className="bg-gray-400 text-black">
           <th className="border border-slate-600">Title</th>
-          <th className="border border-slate-600" style={{width: '135px'}}>Deadline</th>
+          <th className="border border-slate-600" style={{width: '145px'}}>Deadline</th>
           <th className="border border-slate-600">Description</th>
           <th className="border border-slate-600" style={{width: '100px'}}>Actions</th>
         </tr>

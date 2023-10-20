@@ -265,12 +265,12 @@ export default function Calendar({ actionItems }) {
                   </div> */}
                   {/* <br /> */}
                   <div
-                    className="calendar__row--appt text-secondary"
+                    className="calendar__row--appt text-secondary overflow-scroll"
                   >
-                    {calendarSquare.appts.map((appt) => {
+                    {calendarSquare.appts.map((appt, i) => {
                       return (
                         <div key={uuid()} className="calendar__appt">
-                          <span className="calendar__element--subject">{appt.title}</span>
+                          <span className="calendar__element--subject line-clamp-1">{i+1}. {appt.title}</span>
                           {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                         </div>
                       );
@@ -306,12 +306,12 @@ export default function Calendar({ actionItems }) {
                   </div>
                   {/* <br /> */}
                   <div
-                    className="calendar__row--appt text-secondary "
+                    className="calendar__row--appt text-secondary overflow-scroll"
                   >
-                    {calendarSquare.appts.map((appt) => {
+                    {calendarSquare.appts.map((appt, i) => {
                       return (
                         <div key={uuid()} className="calendar__appt">
-                          <span className="calendar__element--subject">{appt.title}</span>
+                          <span className="calendar__element--subject line-clamp-1">{i+1}. {appt.title}</span>
                           {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                         </div>
                       );
