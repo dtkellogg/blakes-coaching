@@ -76,8 +76,13 @@ export const makeCalendar = (date, actionItems) => {
           const itemDate = item.deadline.split("T")[0].split("-");
           const itemDay = parseInt(itemDate[2]);
           const itemMonth = months[itemDate[1] - 1];
+          const itemYear = itemDate[0];
 
-          if (itemDay === calDay.num && itemMonth === calDay.month) {
+          console.log(`itemYear: ${typeof itemYear}`)
+          console.log(`calDay.year: ${typeof calDay.year}`)
+          console.log(`itemYear === calDay.year: ${itemYear === calDay.year.toString()}`)
+
+          if (itemDay === calDay.num && itemMonth === calDay.month && itemYear === calDay.year.toString()) {
             // console.log('calDay')
             // console.log(calDay)
             calDay.appts.push(item);
@@ -281,7 +286,8 @@ export default function Calendar({ actionItems }) {
                   style={{borderWidth: '0.5px'}}
                 >
                   <Tooltip message={"Today"}>
-                    <span className="p-1 text-white bg-secondary rounded-full px-2">
+                    {/* <span className="p-1 text-white bg-secondary rounded-full px-2"> */}
+                    <span className="">
                       {calendarSquare.num}
                     </span>
                   </Tooltip>
