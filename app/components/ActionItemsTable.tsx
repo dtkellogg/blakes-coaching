@@ -38,7 +38,9 @@ export default async function ActionItemsTable({ actionItems }) {
         </tr>
       </thead>
       <tbody>
-        {actionItems && actionItems.map(({ _id, title, deadline, description, completed }: any, i: number) => (
+        {actionItems && actionItems
+          .sort((a,b) => new Date(a.deadline) - new Date(b.deadline))
+          .map(({ _id, title, deadline, description, completed }: any, i: number) => (
           <tr key={i} className="bg-gray-100 text-black" style={{height: '100%'}}>
             <td className="border border-slate-700"><Tooltip message={title}><span className="line-clamp-1">{title}</span></Tooltip></td>
             <td className="border border-slate-700">{new Date(`${deadline}`).toUTCString().split(" 00:")[0]}</td>
