@@ -11,6 +11,10 @@
     @apply py-2 px-4 bg-secondary text-white rounded-md text-center hover:opacity-70 transition ease-in-out
   }
 
+  .btn-primary-small {
+    @apply py-1 px-2 text-lg bg-secondary text-white rounded-md text-center hover:opacity-70 transition ease-in-out
+  }
+
   .header-primary {
     @apply text-4xl w-max mx-auto
   }

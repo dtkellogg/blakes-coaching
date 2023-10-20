@@ -112,6 +112,9 @@ export default function Calendar({ actionItems }) {
   const handleForwards = () => {
     handleChangeCalendarMonth('forwards', date, month, year)
   }
+  const handleReset = () => {
+    handleChangeCalendarMonth('reset', date, month, year)
+  }
 
   const handleChangeCalendarMonth = (type) => {
     try {
@@ -127,6 +130,8 @@ export default function Calendar({ actionItems }) {
         newDate = month !== 0 
           ? new Date(year, previousMonth)
           : new Date(year - 1, previousMonth)
+      } else if(type === 'reset'){
+        newDate = new Date(new Date().getFullYear(), new Date().getMonth())
       }
       console.log('Hello')
       console.log(actionItems)
@@ -155,7 +160,12 @@ export default function Calendar({ actionItems }) {
             onClick={() => handleBackwards()}
           />
         </Tooltip>
-        <div className="header__calendar">{`${months[month]} ${year}`}</div>
+        <div className="header__calendar relative">
+          <span>{`${months[month]} ${year}`}</span>
+          {(month !== new Date().getMonth() || year !== new Date().getFullYear()) && <button onClick={() => handleReset()} className="btn-primary-small translate-x-4">
+            Today
+          </button>}
+        </div>
         <Tooltip message={"Next Month"}>
           <ChevronRightIcon
             width={35}
