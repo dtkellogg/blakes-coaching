@@ -53,7 +53,7 @@ export default async function ActionItemsTable({ actionItems }) {
                     <PencilSquareIcon className="h-8 w-8 cursor-pointer" style={{color: "green"}} />
                   </Tooltip>
                 </Link>
-                <Tooltip message={"Mark as Completed"}>
+                <Tooltip message={completed ? "Mark as Incomplete" : "Mark as Complete"}>
                   <CompletedActionItemButton id={_id} title={title} deadline={deadline} description={description} completed={completed} />
                 </Tooltip>
               </div>
