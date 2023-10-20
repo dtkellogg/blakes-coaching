@@ -160,11 +160,17 @@ export default function Calendar({ actionItems }) {
             onClick={() => handleBackwards()}
           />
         </Tooltip>
-        <div className="header__calendar relative">
+        <div className="header__calendar relative flex">
           <span>{`${months[month]} ${year}`}</span>
-          {(month !== new Date().getMonth() || year !== new Date().getFullYear()) && <button onClick={() => handleReset()} className="btn-primary-small translate-x-4">
-            Today
-          </button>}
+          {(month !== new Date().getMonth() || year !== new Date().getFullYear()) && 
+            <div className="translate-x-4">
+              <Tooltip message={"Reset Calendar"}>
+                <button onClick={() => handleReset()} className="btn-primary-small">
+                  Today
+                </button>
+              </Tooltip>
+            </div>
+          }
         </div>
         <Tooltip message={"Next Month"}>
           <ChevronRightIcon
