@@ -32,29 +32,31 @@ export default async function ActionItemsTable({ actionItems }) {
       <thead>
         <tr className="bg-gray-400 text-black">
           <th className="border border-slate-600">Title</th>
-          <th className="border border-slate-600">Deadline</th>
+          <th className="border border-slate-600" style={{width: '135px'}}>Deadline</th>
           <th className="border border-slate-600">Description</th>
           <th className="border border-slate-600" style={{width: '100px'}}>Actions</th>
         </tr>
       </thead>
       <tbody>
         {actionItems && actionItems.map(({ _id, title, deadline, description, completed }: any, i: number) => (
-          <tr key={i} className="bg-gray-100 text-black">
-            <td className="border border-slate-700">{title}</td>
+          <tr key={i} className="bg-gray-100 text-black" style={{height: '100%'}}>
+            <td className="border border-slate-700"><Tooltip message={title}>{title}</Tooltip></td>
             <td className="border border-slate-700">{new Date(`${deadline}`).toUTCString().split(" 00:")[0]}</td>
-            <td className="border border-slate-700">{description}</td>
-            <td className="border border-slate-700 flex">
-              <Tooltip message={"Delete"}>
-                <DeleteActionItemButton id={_id} />
-              </Tooltip>
-              <Link href={`/tasks/editActionItem/${_id}?title=${title}&deadline=${deadline}&description=${description}`}>
-                <Tooltip message={"Edit"}>
-                  <PencilSquareIcon className="h-8 w-8 cursor-pointer" style={{color: "green"}} />
+            <td className="border border-slate-700"><Tooltip message={description}>{description}</Tooltip></td>
+            <td className="border border-slate-700 flex" style={{height: '100%'}}>
+              <div className="flex">
+                <Tooltip message={"Delete"}>
+                  <DeleteActionItemButton id={_id} />
                 </Tooltip>
-              </Link>
-              <Tooltip message={"Mark as Completed"}>
-                <CompletedActionItemButton id={_id} title={title} deadline={deadline} description={description} completed={completed} />
-              </Tooltip>
+                <Link href={`/tasks/editActionItem/${_id}?title=${title}&deadline=${deadline}&description=${description}`}>
+                  <Tooltip message={"Edit"}>
+                    <PencilSquareIcon className="h-8 w-8 cursor-pointer" style={{color: "green"}} />
+                  </Tooltip>
+                </Link>
+                <Tooltip message={"Mark as Completed"}>
+                  <CompletedActionItemButton id={_id} title={title} deadline={deadline} description={description} completed={completed} />
+                </Tooltip>
+              </div>
             </td>
           </tr>
         ))}

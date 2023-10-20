@@ -7,20 +7,20 @@ import Tooltip from './Tooltip';
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 const { v4: uuid } = require("uuid");
 
-function AMPMTime(time) {
-  return useFormatAMPM(time);
-}
+// function AMPMTime(time) {
+//   return useFormatAMPM(time);
+// }
 
-function useFormatAMPM(date) {
-  var hours = date.split(":")[0];
-  var minutes = date.split(":")[1];
-  var ampm = hours >= 12 ? "pm" : "am";
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  var strTime = hours + ":" + minutes + ampm;
+// function useFormatAMPM(date) {
+//   var hours = date.split(":")[0];
+//   var minutes = date.split(":")[1];
+//   var ampm = hours >= 12 ? "pm" : "am";
+//   hours = hours % 12;
+//   hours = hours ? hours : 12; // the hour '0' should be '12'
+//   var strTime = hours + ":" + minutes + ampm;
 
-  return strTime;
-}
+//   return strTime;
+// }
 
 function getDaysInMonth(m, y) {
   // months in JavaScript start at 0 so decrement by 1 e.g. 11 = Dec
@@ -189,7 +189,7 @@ export default function Calendar({ actionItems }) {
                   >
                     {calendarSquare.num}
                   </div>
-                  <br />
+                  {/* <br /> */}
                   <div
                     className="calendar__row--appt text-secondary"
                   >
@@ -235,7 +235,7 @@ export default function Calendar({ actionItems }) {
                   >
                     {calendarSquare.num}
                   </div>
-                  <br />
+                  {/* <br /> */}
                   <div
                     className="calendar__row--appt text-secondary"
                   >
@@ -257,9 +257,11 @@ export default function Calendar({ actionItems }) {
                   className="h-full w-full flex items-start border border-black justify-end p-1"
                   style={{borderWidth: '0.5px'}}
                 >
-                  <span className="p-1 text-white bg-secondary rounded-full px-2">
-                    {calendarSquare.num}
-                  </span>
+                  <Tooltip message={"Today"}>
+                    <span className="p-1 text-white bg-secondary rounded-full px-2">
+                      {calendarSquare.num}
+                    </span>
+                  </Tooltip>
                 </li>
               );
           } else {
@@ -273,7 +275,7 @@ export default function Calendar({ actionItems }) {
                   <div style={{ display: "block", alignSelf: "flex-end" }}>
                     {calendarSquare.num}
                   </div>
-                  <br />
+                  {/* <br /> */}
                   <div
                     className="calendar__row--appt text-secondary"
                   >
