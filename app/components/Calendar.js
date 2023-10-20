@@ -236,15 +236,22 @@ export default function Calendar({ actionItems }) {
                   style={{borderWidth: '0.5px'}}
                   key={uuid()}
                 >
-                  <div
+                  <div className="ml-auto">
+                    <Tooltip message={"Today"}>
+                      <span className="p-1 text-white bg-secondary rounded-full px-2">
+                        {calendarSquare.num}
+                      </span>
+                    </Tooltip>
+                  </div>
+                  {/* <div
+                    className="p-1 text-white bg-secondary rounded-full px-2"
                     style={{
                       display: "block",
-                      fontWeight: "bold",
                       alignSelf: "flex-end",
                     }}
                   >
                     {calendarSquare.num}
-                  </div>
+                  </div> */}
                   {/* <br /> */}
                   <div
                     className="calendar__row--appt text-secondary"
@@ -287,7 +294,7 @@ export default function Calendar({ actionItems }) {
                   </div>
                   {/* <br /> */}
                   <div
-                    className="calendar__row--appt text-secondary"
+                    className="calendar__row--appt text-secondary "
                   >
                     {calendarSquare.appts.map((appt) => {
                       return (
