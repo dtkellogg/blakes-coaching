@@ -43,6 +43,7 @@ export default function EditActionItemForm() {
       setTitle("");
       setDeadline("");
       setDescription("");
+      router.refresh()
       router.push('/tasks')
     }
 

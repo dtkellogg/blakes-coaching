@@ -32,6 +32,7 @@ export default function CreateActionItemForm() {
       setTitle("");
       setDeadline("");
       setDescription("");
+      router.refresh()
       router.push('/tasks')
     }
 
