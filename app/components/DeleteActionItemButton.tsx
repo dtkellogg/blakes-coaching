@@ -7,9 +7,7 @@ export default function DeleteActionItemButton({ id }) {
   const router = useRouter();
 
   const removeActionItem = async (id: string) => {
-    // const confirmed = confirm("Are you sure?");
-    console.log(id);
-    const confirmed = true
+    const confirmed = confirm("Are you sure?");
 
     if (confirmed) {
       const res = await fetch(`http://localhost:3000/api/actionItems?id=${id}`, {
@@ -18,10 +16,6 @@ export default function DeleteActionItemButton({ id }) {
 
       if (res.ok) {
         router.refresh()
-        router.push('/tasks/?undefined')
-        router.refresh()
-        // router.replace(router.asPath)
-        // console.log('DELETED !!!')
       }
     }
   };
