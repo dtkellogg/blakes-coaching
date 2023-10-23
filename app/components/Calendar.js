@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import CalendarDaysOfWeek from "./CalendarDaysOfWeek";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Tooltip from './Tooltip';
@@ -50,7 +50,7 @@ export const makeCalendar = (date, actionItems) => {
       arrayDaysLastMonth = [],
       arrayDaysNextMonth = []
 
-    console.log(`daysInThisMonth: ${daysInThisMonth}, daysInLastMonth: ${daysInLastMonth}, daysInLastMonthToShow: ${daysInLastMonthToShow}`)
+    // console.log(`daysInThisMonth: ${daysInThisMonth}, daysInLastMonth: ${daysInLastMonth}, daysInLastMonthToShow: ${daysInLastMonthToShow}`)
     
     for (let i = daysInLastMonth; i > daysInLastMonth - daysInLastMonthToShow; i--) {
       arrayDaysLastMonth.unshift({ num: i, month: months[month - 1], year: year, appts: [] })
@@ -78,9 +78,9 @@ export const makeCalendar = (date, actionItems) => {
           const itemMonth = months[itemDate[1] - 1];
           const itemYear = itemDate[0];
 
-          console.log(`itemYear: ${typeof itemYear}`)
-          console.log(`calDay.year: ${typeof calDay.year}`)
-          console.log(`itemYear === calDay.year: ${itemYear === calDay.year.toString()}`)
+          // console.log(`itemYear: ${typeof itemYear}`)
+          // console.log(`calDay.year: ${typeof calDay.year}`)
+          // console.log(`itemYear === calDay.year: ${itemYear === calDay.year.toString()}`)
 
           if (itemDay === calDay.num && itemMonth === calDay.month && itemYear === calDay.year.toString()) {
             // console.log('calDay')
@@ -150,6 +150,13 @@ export default function Calendar({ actionItems }) {
         : error.message
     }
   }
+
+  useEffect(() => {
+    setCalendarDays(makeCalendar(date, actionItems))
+  }, [actionItems])
+
+  console.log('CALENDAR DAYS')
+  console.log(calendarDays)
 
   return (
     <div className="bg-white border border-black grid grid-cols-7 grid-rows-[3rem_2rem_repeat(6,_1fr)] mb-10 text-black h-[45rem]">

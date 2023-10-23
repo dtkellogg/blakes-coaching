@@ -17,7 +17,11 @@ export default function DeleteActionItemButton({ id }) {
       });
 
       if (res.ok) {
-        router.refresh();
+        router.refresh()
+        router.push('/tasks/?undefined')
+        router.refresh()
+        // router.replace(router.asPath)
+        // console.log('DELETED !!!')
       }
     }
   };
