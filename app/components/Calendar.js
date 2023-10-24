@@ -138,8 +138,8 @@ export default function Calendar({ actionItems }) {
       } else if(type === 'reset'){
         newDate = new Date(new Date().getFullYear(), new Date().getMonth())
       }
-      console.log('Hello')
-      console.log(actionItems)
+      // console.log('Hello')
+      // console.log(actionItems)
       setCalendarDays(makeCalendar(newDate, actionItems))
       setDate(newDate)
       setMonth(newDate.getMonth())
@@ -155,8 +155,8 @@ export default function Calendar({ actionItems }) {
     setCalendarDays(makeCalendar(date, actionItems))
   }, [actionItems])
 
-  console.log('CALENDAR DAYS')
-  console.log(calendarDays)
+  // console.log('CALENDAR DAYS')
+  // console.log(calendarDays)
 
   return (
     <div className="bg-white border border-black grid grid-cols-7 grid-rows-[3rem_2rem_repeat(6,_1fr)] mb-10 text-black h-[45rem]">

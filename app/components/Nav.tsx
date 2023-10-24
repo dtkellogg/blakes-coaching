@@ -1,5 +1,7 @@
 'use client'
+
 import { usePathname } from 'next/navigation'
+import { useSession, signOut } from "next-auth/react";
 
 import Image from "next/image";
 import NavLink from "next/link";
@@ -11,7 +13,9 @@ export default function Nav() {
     return pathname?.split('/')[1] === path
   }
 
-  // console.log(isActive('tasks'))
+  const { data: session } = useSession();
+
+  console.log('session', session)
 
   return (
     <div className="flex items-center justify-between pr-10 margin-auto">
@@ -32,9 +36,17 @@ export default function Nav() {
         <NavLink href="/video" className={`hover:text-secondary transition ease-in-out ${isActive('video') && 'underline decoration-secondary underline-offset-4'}`}>
           Video
         </NavLink>
-        <NavLink href="/login" className={`hover:text-secondary transition ease-in-out ${isActive('')}`}>
-          Sign In
-        </NavLink>
+        {session?.user
+          ? <button
+              onClick={() => signOut()} 
+              className={`hover:text-secondary transition ease-in-out ${isActive('')}`}
+            >
+              Sign out
+            </button>
+          :  <NavLink href="/login" className={`hover:text-secondary transition ease-in-out ${isActive('')}`}>
+              Sign In
+            </NavLink>
+      }
       </section>
     </div>
   )
