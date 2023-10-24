@@ -65,7 +65,7 @@ export const makeCalendar = (date, actionItems) => {
     let arrayAllDays = [...arrayDaysLastMonth, ...arrayDaysCurrentMonth, ...arrayDaysNextMonth],
         allDaysWithAppts = []
 
-    console.log(actionItems)
+    // console.log(actionItems)
 
     arrayAllDays.forEach((calDay) => {
       actionItems
@@ -91,7 +91,7 @@ export const makeCalendar = (date, actionItems) => {
       allDaysWithAppts.push(calDay);
     })
 
-    console.log(arrayAllDays)
+    // console.log(arrayAllDays)
 
     return arrayAllDays
   } catch (error) {

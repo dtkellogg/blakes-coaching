@@ -5,7 +5,7 @@ import Calendar from '@/app/components/Calendar'
 
 const getActionItems = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/actionItems", {
+    const res = await fetch("api/actionItems", {
       cache: "no-store",
     });
 
