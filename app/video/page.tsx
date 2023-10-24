@@ -13,11 +13,11 @@ export default async function Video() {
   // console.log('session:', session)
 
   return (
-    <div className="">
+    <main className="px-60 pb-4 mb-auto">
       <h1 className="header-primary">Video</h1>
       <div className="mt-[27.5vh] text-center text-xl">
         <span>Coming soon...</span>
       </div>
-    </div>
+    </main>
   )
 }

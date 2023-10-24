@@ -24,12 +24,6 @@ export default function CompletedActionItemButton({ id, title, deadline, descrip
       })
     })
 
-    // await fetch("http://localhost:3000/api/actionItems", {
-    //     cache: "no-store",
-    //   });
-
-    // revalidatePath('/actionItems')
-
     router.refresh()
 
     const res2 = await res.json();
@@ -37,9 +31,9 @@ export default function CompletedActionItemButton({ id, title, deadline, descrip
     setError(msg);
     setStatus(status);
 
-    console.log(res2)
-    console.log(`msg: ${msg}, status: ${status}`)
-    console.log(msg)
+    // console.log(res2)
+    // console.log(`msg: ${msg}, status: ${status}`)
+    // console.log(msg)
   };
 
   return (

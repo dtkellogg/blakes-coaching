@@ -24,7 +24,7 @@ export default async function Tasks() {
   const { actionItems } = await getActionItems()
 
   return (
-    <div className="flex flex-col">
+    <main className="px-60 pb-4 mb-auto">
       <h1 className="header-primary mb-4">Tasks</h1>
       {/* <ActionItemsList /> */}
       <ActionItemsTable actionItems={actionItems} />
@@ -34,6 +34,6 @@ export default async function Tasks() {
         </button>
       </Link>
       <Calendar actionItems={actionItems} />
-    </div>
+    </main>
   )
 }

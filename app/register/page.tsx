@@ -8,5 +8,9 @@ export default async function Register() {
 
   if (session) redirect("/tasks");
 
-  return <RegisterForm />;
+  return (
+    <main className="px-60 pb-16 my-auto">
+      <RegisterForm />
+    </main>
+  )
 }

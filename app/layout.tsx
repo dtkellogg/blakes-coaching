@@ -14,12 +14,22 @@ export default function RootLayout({
 }) {
 
   const headersList = headers();
-  const fullUrl = headersList.get('referer') || "",
-    urlKeyValue = fullUrl.split('/')[fullUrl.split('/').length - 1]
+  // const fullUrl = headersList.get('referer') || "",
+  //   urlKeyValue = fullUrl.split('/')[fullUrl.split('/').length - 1]
 
-  console.log(headersList)
-    console.log('fullUrl', fullUrl)
-  console.log('urlKeyValue', urlKeyValue)
+  // console.log(headersList)
+  // console.log('fullUrl', fullUrl)
+  // console.log('urlKeyValue', urlKeyValue)
+
+// const domain = headersList.get("x-forwarded-host") || "";
+// const protocol = headersList.get("x-forwarded-proto") || "";
+// const pathname = headersList.get("x-invoke-path") || "";
+
+
+//   console.log('domain', headersList.get("x-forwarded-host"))
+//   console.log('protocol', headersList.get("x-forwarded-proto"))
+//   console.log('pathname', headersList.get("x-invoke-path"))
+
 
   return (
     <html lang="en">
@@ -27,9 +37,9 @@ export default function RootLayout({
         <AuthProvider>
           <Nav />
           {/* <main className={`px-60 pb-4 mb-auto ${urlKeyValue === 'login' || urlKeyValue === '/login/page' || urlKeyValue === 'register' || urlKeyValue === '/register/page' ? 'mt-auto pb-16' : ''}`}> */}
-          <main className="px-60 pb-4 mb-auto">
+          {/* <main className="px-60 pb-4 mb-auto"> */}
             {children}
-          </main>
+          {/* </main> */}
           <Footer />
         </AuthProvider>
       </body>
