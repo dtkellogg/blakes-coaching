@@ -32,7 +32,7 @@ export default function Nav() {
         <NavLink href="/video" className={`hover:text-secondary transition ease-in-out ${isActive('video') && 'underline decoration-secondary underline-offset-4'}`}>
           Video
         </NavLink>
-        <NavLink href="/" className={`hover:text-secondary transition ease-in-out ${isActive('')}`}>
+        <NavLink href="/login" className={`hover:text-secondary transition ease-in-out ${isActive('')}`}>
           Sign In
         </NavLink>
       </section>
