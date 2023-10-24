@@ -13,7 +13,7 @@ export default function CompletedActionItemButton({ id, title, deadline, descrip
   const toggleCompleted = async (id: string) => {
     completed = !completed
 
-    const res = await fetch(`api/actionItems/${id}`, {
+    const res = await fetch(`../../api/actionItems/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -46,7 +46,7 @@ export default function CompletedActionItemButton({ id, title, deadline, descrip
     <button onClick={() => toggleCompleted(id)}>
       {
         completed 
-          ? <CheckCircleIcon className="h-8 w-8 cursor-pointer" style={{color: "gold"}} />
+          ? <CheckCircleIcon className="h-8 w-8 cursor-pointer text-tertiary" />
           : <XCircleIcon className="h-8 w-8 cursor-pointer" style={{color: "grey"}} />
       }
     </button>

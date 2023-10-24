@@ -6,27 +6,9 @@ import CompletedActionItemButton from "./CompletedActionItemButton";
 
 export default async function ActionItemsTable({ actionItems }) {
 
-  // const getActionItems = async () => {
-  //   try {
-  //     const res = await fetch("http://localhost:3000/api/actionItems", {
-  //       cache: "no-store",
-  //     });
-
-  //     if (!res.ok) {
-  //       throw new Error("Failed to fetch Action Items");
-  //     }
-
-  //     return res.json();
-  //   } catch (error) {
-  //     console.log("Error loading Action Items: ", error);
-  //   }
-  // };
-
-  // const { actionItems } = await getActionItems()
-
   return (
     <table className="table-fixed border-separate border-spacing-0.5 border border-slate-500">
-      <caption className="caption-bottom">
+      <caption className="caption-bottom text-quaternary">
         Table 1: All Action Items sorted by deadline.
       </caption>
       <thead>
@@ -52,7 +34,7 @@ export default async function ActionItemsTable({ actionItems }) {
                 </Tooltip>
                 <Link href={`/tasks/editActionItem/${_id}?title=${title}&deadline=${deadline}&description=${description}`}>
                   <Tooltip message={"Edit"}>
-                    <PencilSquareIcon className="h-8 w-8 cursor-pointer" style={{color: "green"}} />
+                    <PencilSquareIcon className="h-8 w-8 cursor-pointer text-green-600" />
                   </Tooltip>
                 </Link>
                 <Tooltip message={completed ? "Mark as Incomplete" : "Mark as Complete"}>

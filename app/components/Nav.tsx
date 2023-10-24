@@ -18,7 +18,7 @@ export default function Nav() {
   console.log('session', session)
 
   return (
-    <div className="flex items-center justify-between pr-10 margin-auto">
+    <div className="flex items-center justify-between pr-10 margin-auto text-quaternary">
       <NavLink href="/">
         <Image
           src="/action-manager.svg"

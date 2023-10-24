@@ -2,7 +2,7 @@ export default async function ActionItemsList() {
 
   const getActionItems = async () => {
     try {
-      const res = await fetch("api/actionItems", {
+      const res = await fetch("http://localhost:3000/api/actionItems", {
         cache: "no-store",
       });
 

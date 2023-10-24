@@ -10,7 +10,7 @@ export default function DeleteActionItemButton({ id }) {
     const confirmed = confirm("Are you sure?");
 
     if (confirmed) {
-      const res = await fetch(`api/actionItems?id=${id}`, {
+      const res = await fetch(`http://localhost:3000/api/actionItems?id=${id}`, {
         method: "DELETE",
       });
 
@@ -21,8 +21,8 @@ export default function DeleteActionItemButton({ id }) {
   };
 
   return (
-    <button onClick={() => removeActionItem(id)} className="text-red-400">
-      <TrashIcon className="h-8 w-8 cursor-pointer" style={{color: "red"}} />
+    <button onClick={() => removeActionItem(id)}>
+      <TrashIcon className="h-8 w-8 cursor-pointer text-red-600" />
     </button>
   )
 }

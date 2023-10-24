@@ -16,7 +16,7 @@
   }
 
   .header-primary {
-    @apply text-4xl w-max mx-auto
+    @apply text-4xl w-max mx-auto text-quaternary
   }
 
   .input {

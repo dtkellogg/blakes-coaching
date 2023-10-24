@@ -20,7 +20,7 @@ export default function EditActionItemForm() {
 
     console.log(`tile: ${title}, description: ${description}, deadline: ${new Date(deadline).toISOString()}`)
 
-    const res = await fetch(`api/actionItems/${params.id}`, {
+    const res = await fetch(`../../api/actionItems/${params.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({
