@@ -28,12 +28,13 @@ export default async function Tasks() {
     <main className="px-60 pb-4 mb-auto">
       <h1 className="header-primary mb-4">Tasks</h1>
       {/* <ActionItemsList /> */}
-      <div className="overflow-hidden border border-black rounded-lg mb-12">
+      {/* <ActionItemsTable actionItems={actionItems} /> */}
+    {/* <div className="border border-black rounded-lg"> */}
+      <div className="overflow-hidden border border-black rounded-xl">
         <ActionItemsTable2 actionItems={actionItems} />
       </div>
-      <ActionItemsTable actionItems={actionItems} />
       <Link href="/tasks/createActionItem">
-        <button className="btn-primary my-10 w-full">
+        <button className="btn-primary my-6 w-full">
           Create Action Item
         </button>
       </Link>

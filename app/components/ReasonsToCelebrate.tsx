@@ -4,7 +4,7 @@ import DeleteActionItemButton from "./DeleteActionItemButton";
 import Tooltip from "./Tooltip";
 import CompletedActionItemButton from "./CompletedActionItemButton";
 
-export default async function ActionItemsTable2({ actionItems }) {
+export default async function ReasonsToCelebrate({ actionItems }) {
 
   return (
     <table className="table-fixed divide-y divide-gray-200">
@@ -12,11 +12,11 @@ export default async function ActionItemsTable2({ actionItems }) {
         Table 1: All Action Items sorted by deadline.
       </caption> */}
       <thead>
-        <tr className="bg-gray-300 text-black">
-          <th className="font-semibold">Title</th>
-          <th className="font-semibold" style={{width: '145px'}}>Deadline</th>
-          <th className="font-semibold">Description</th>
-          <th className="font-semibold" style={{width: '100px'}}>Actions</th>
+        <tr className="bg-gray-400 text-black">
+          <th className="">Title</th>
+          <th className="" style={{width: '145px'}}>Deadline</th>
+          <th className="">Description</th>
+          <th className="" style={{width: '100px'}}>Actions</th>
         </tr>
       </thead>
       <tbody>
