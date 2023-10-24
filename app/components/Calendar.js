@@ -159,185 +159,187 @@ export default function Calendar({ actionItems }) {
   // console.log(calendarDays)
 
   return (
-    <div className="bg-white border border-black grid grid-cols-7 grid-rows-[3rem_2rem_repeat(6,_1fr)] mb-10 text-black h-[45rem]">
+    <div className="overflow-hidden border border-black rounded-md mb-10">
+      <div className="bg-white grid grid-cols-7 grid-rows-[3rem_2rem_repeat(6,_1fr)] text-black h-[45rem]">
 
-      {/* --- header: --- */}
+        {/* --- header: --- */}
 
-      <div className="flex justify-between row-span-1 row-start-1 col-span-full px-32 border border-black text-xl items-center bg-gray-300 ">
-        <Tooltip message={"Previous Month"}>
-          <ChevronLeftIcon
-            width={35}
-            height={35}
-            className="btn__calendar text-secondary fill-secondary cursor-pointer"
-            onClick={() => handleBackwards()}
-          />
-        </Tooltip>
-        <div className="header__calendar relative flex">
-          <span>{`${months[month]} ${year}`}</span>
-          {(month !== new Date().getMonth() || year !== new Date().getFullYear()) && 
-            <div className="translate-x-4">
-              <Tooltip message={"Reset Calendar"}>
-                <button onClick={() => handleReset()} className="btn-primary-small">
-                  Today
-                </button>
-              </Tooltip>
-            </div>
-          }
+        <div className="flex justify-between row-span-1 row-start-1 col-span-full px-32 border border-black text-xl items-center bg-gray-300 ">
+          <Tooltip message={"Previous Month"}>
+            <ChevronLeftIcon
+              width={35}
+              height={35}
+              className="btn__calendar text-secondary fill-secondary cursor-pointer"
+              onClick={() => handleBackwards()}
+            />
+          </Tooltip>
+          <div className="header__calendar relative flex">
+            <span>{`${months[month]} ${year}`}</span>
+            {(month !== new Date().getMonth() || year !== new Date().getFullYear()) && 
+              <div className="translate-x-4">
+                <Tooltip message={"Reset Calendar"}>
+                  <button onClick={() => handleReset()} className="btn-primary-small">
+                    Today
+                  </button>
+                </Tooltip>
+              </div>
+            }
+          </div>
+          <Tooltip message={"Next Month"}>
+            <ChevronRightIcon
+              width={35}
+              height={35}
+              className="btn__calendar text-secondary fill-secondary cursor-pointer"
+              onClick={() => handleForwards()}
+            />
+          </Tooltip>
         </div>
-        <Tooltip message={"Next Month"}>
-          <ChevronRightIcon
-            width={35}
-            height={35}
-            className="btn__calendar text-secondary fill-secondary cursor-pointer"
-            onClick={() => handleForwards()}
-          />
-        </Tooltip>
-      </div>
 
-      <CalendarDaysOfWeek />
+        <CalendarDaysOfWeek />
 
-      {/* --- body --- */}
+        {/* --- body --- */}
 
-      <ul className="grid grid-cols-7 grid-rows-6 justify-center items-start col-span-full border-x-[1px] border-b-[1px] border-black" style={{gridRow: '3/-1'}}>
-        {calendarDays.map((calendarSquare) => {
-          if (calendarSquare.month !== months[month]) {
-            if (calendarSquare.appts.length !== 0) {
-              return (
-                <li
-                  className="calendar__row--element-with-appts text-gray-500 h-full w-full flex items-start border border-black justify-start flex-col p-1"
-                  style={{borderWidth: '0.5px'}}
-                  key={uuid()}
-                >
-                  <div
-                    style={{
-                      display: "block",
-                      color: "var(--grey-5)",
-                      alignSelf: "flex-end",
-                    }}
+        <ul className="grid grid-cols-7 grid-rows-6 justify-center items-start col-span-full border-x-[1px] border-b-[1px] border-black" style={{gridRow: '3/-1'}}>
+          {calendarDays.map((calendarSquare) => {
+            if (calendarSquare.month !== months[month]) {
+              if (calendarSquare.appts.length !== 0) {
+                return (
+                  <li
+                    className="calendar__row--element-with-appts text-gray-500 h-full w-full flex items-start border border-black justify-start flex-col p-1"
+                    style={{borderWidth: '0.5px'}}
+                    key={uuid()}
+                  >
+                    <div
+                      style={{
+                        display: "block",
+                        color: "var(--grey-5)",
+                        alignSelf: "flex-end",
+                      }}
+                    >
+                      {calendarSquare.num}
+                    </div>
+                    {/* <br /> */}
+                    <div
+                      className="calendar__row--appt text-secondary"
+                    >
+                      {calendarSquare.appts.map((appt) => {
+                        return (
+                          <div key={uuid()}>
+                            <span className="calendar__element--subject">{appt.title}</span>
+                            {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </li>
+                );
+              } else
+                return (
+                  <li
+                    key={uuid()}
+                    className="h-full w-full flex items-start border border-black justify-end p-1 text-gray-500"
+                    style={{borderWidth: '0.5px'}}
                   >
                     {calendarSquare.num}
-                  </div>
-                  {/* <br /> */}
-                  <div
-                    className="calendar__row--appt text-secondary"
+                  </li>
+                );
+            } else if (
+              calendarSquare.num === day &&
+              calendarSquare.month === months[(new Date()).getMonth()] &&
+              calendarSquare.year === year
+            ) {
+              if (calendarSquare.appts.length !== 0) {
+                return (
+                  <li
+                    className="calendar__row--element-with-appts text-secondary h-full w-full flex items-start border border-black justify-start flex-col p-1"
+                    style={{borderWidth: '0.5px'}}
+                    key={uuid()}
                   >
-                    {calendarSquare.appts.map((appt) => {
-                      return (
-                        <div key={uuid()}>
-                          <span className="calendar__element--subject">{appt.title}</span>
-                          {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </li>
-              );
-            } else
-              return (
+                    <div className="ml-auto">
+                      <Tooltip message={"Today"}>
+                        <span className="p-1 text-white bg-secondary rounded-full px-2">
+                          {calendarSquare.num}
+                        </span>
+                      </Tooltip>
+                    </div>
+                    {/* <div
+                      className="p-1 text-white bg-secondary rounded-full px-2"
+                      style={{
+                        display: "block",
+                        alignSelf: "flex-end",
+                      }}
+                    >
+                      {calendarSquare.num}
+                    </div> */}
+                    {/* <br /> */}
+                    <div
+                      className="calendar__row--appt text-secondary overflow-scroll"
+                    >
+                      {calendarSquare.appts.map((appt, i) => {
+                        return (
+                          <div key={uuid()} className="calendar__appt">
+                            <span className="calendar__element--subject line-clamp-1">{i+1}. {appt.title}</span>
+                            {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </li>
+                );
+              } else
+                return (
+                  <li
+                    key={uuid()}
+                    className="h-full w-full flex items-start border border-black justify-end p-1"
+                    style={{borderWidth: '0.5px'}}
+                  >
+                    <Tooltip message={"Today"}>
+                      {/* <span className="p-1 text-white bg-secondary rounded-full px-2"> */}
+                      <span className="p-1 text-white bg-secondary rounded-full px-2">
+                        {calendarSquare.num}
+                      </span>
+                    </Tooltip>
+                  </li>
+                );
+            } else {
+              if (calendarSquare.appts.length !== 0) {
+                return (
+                  <li
+                    key={uuid()}
+                    className="calendar__row--element-with-appts h-full w-full flex items-start border border-black justify-start flex-col p-1"
+                    style={{borderWidth: '0.5px'}}
+                  >
+                    <div style={{ display: "block", alignSelf: "flex-end" }}>
+                      {calendarSquare.num}
+                    </div>
+                    {/* <br /> */}
+                    <div
+                      className="calendar__row--appt text-secondary overflow-scroll"
+                    >
+                      {calendarSquare.appts.map((appt, i) => {
+                        return (
+                          <div key={uuid()} className="calendar__appt">
+                            <span className="calendar__element--subject line-clamp-1">{i+1}. {appt.title}</span>
+                            {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </li>
+                );
+              } else return (
                 <li
                   key={uuid()}
-                  className="h-full w-full flex items-start border border-black justify-end p-1 text-gray-500"
+                  className="h-full w-full flex items-start border border-black justify-end p-1 text-black"
                   style={{borderWidth: '0.5px'}}
                 >
                   {calendarSquare.num}
                 </li>
               );
-          } else if (
-            calendarSquare.num === day &&
-            calendarSquare.month === months[(new Date()).getMonth()] &&
-            calendarSquare.year === year
-          ) {
-            if (calendarSquare.appts.length !== 0) {
-              return (
-                <li
-                  className="calendar__row--element-with-appts text-secondary h-full w-full flex items-start border border-black justify-start flex-col p-1"
-                  style={{borderWidth: '0.5px'}}
-                  key={uuid()}
-                >
-                  <div className="ml-auto">
-                    <Tooltip message={"Today"}>
-                      <span className="p-1 text-white bg-secondary rounded-full px-2">
-                        {calendarSquare.num}
-                      </span>
-                    </Tooltip>
-                  </div>
-                  {/* <div
-                    className="p-1 text-white bg-secondary rounded-full px-2"
-                    style={{
-                      display: "block",
-                      alignSelf: "flex-end",
-                    }}
-                  >
-                    {calendarSquare.num}
-                  </div> */}
-                  {/* <br /> */}
-                  <div
-                    className="calendar__row--appt text-secondary overflow-scroll"
-                  >
-                    {calendarSquare.appts.map((appt, i) => {
-                      return (
-                        <div key={uuid()} className="calendar__appt">
-                          <span className="calendar__element--subject line-clamp-1">{i+1}. {appt.title}</span>
-                          {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </li>
-              );
-            } else
-              return (
-                <li
-                  key={uuid()}
-                  className="h-full w-full flex items-start border border-black justify-end p-1"
-                  style={{borderWidth: '0.5px'}}
-                >
-                  <Tooltip message={"Today"}>
-                    {/* <span className="p-1 text-white bg-secondary rounded-full px-2"> */}
-                    <span className="">
-                      {calendarSquare.num}
-                    </span>
-                  </Tooltip>
-                </li>
-              );
-          } else {
-            if (calendarSquare.appts.length !== 0) {
-              return (
-                <li
-                  key={uuid()}
-                  className="calendar__row--element-with-appts h-full w-full flex items-start border border-black justify-start flex-col p-1"
-                  style={{borderWidth: '0.5px'}}
-                >
-                  <div style={{ display: "block", alignSelf: "flex-end" }}>
-                    {calendarSquare.num}
-                  </div>
-                  {/* <br /> */}
-                  <div
-                    className="calendar__row--appt text-secondary overflow-scroll"
-                  >
-                    {calendarSquare.appts.map((appt, i) => {
-                      return (
-                        <div key={uuid()} className="calendar__appt">
-                          <span className="calendar__element--subject line-clamp-1">{i+1}. {appt.title}</span>
-                          {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </li>
-              );
-            } else return (
-              <li
-                key={uuid()}
-                className="h-full w-full flex items-start border border-black justify-end p-1 text-black"
-                style={{borderWidth: '0.5px'}}
-              >
-                {calendarSquare.num}
-              </li>
-            );
-          }
-        })}
-      </ul>
+            }
+          })}
+        </ul>
+      </div>
     </div>
   )
 }

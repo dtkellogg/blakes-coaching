@@ -30,7 +30,7 @@ export default async function Tasks() {
       {/* <ActionItemsList /> */}
       {/* <ActionItemsTable actionItems={actionItems} /> */}
     {/* <div className="border border-black rounded-lg"> */}
-      <div className="overflow-hidden border border-black rounded-xl">
+      <div className="overflow-hidden border border-black rounded-md">
         <ActionItemsTable2 actionItems={actionItems} />
       </div>
       <Link href="/tasks/createActionItem">
