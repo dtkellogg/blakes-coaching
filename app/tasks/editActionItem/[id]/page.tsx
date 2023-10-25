@@ -1,4 +1,4 @@
-import EditActionItemForm from '@/app/components/EditActionItemForm';
+import EditActionItemForm from '@/app/components/forms/EditActionItemForm';
 
 export default function EditActionItem() {
   return (

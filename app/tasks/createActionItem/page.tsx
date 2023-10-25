@@ -1,4 +1,4 @@
-import CreateActionItemForm from '@/app/components/CreateActionItemForm';
+import CreateActionItemForm from '@/app/components/forms/CreateActionItemForm';
 
 export default function CreateActionItem() {
   return (
