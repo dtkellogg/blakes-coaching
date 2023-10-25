@@ -10,10 +10,10 @@ export default async function IncompleteOrLate({ actionItems }) {
     <table className="table-fixed divide-y divide-gray-200 w-full">
       <thead className="w-full">
         <tr className="bg-gray-300 text-black w-full">
-          <th className="">Title</th>
+          <th className="text-left">Title</th>
           {/* <th className="" style={{width: '145px'}}>Deadline</th> */}
           {/* <th className="">Description</th> */}
-          <th className="" style={{width: '66px'}}>Actions</th>
+          <th className="text-left" style={{width: '66px'}}>Actions</th>
         </tr>
       </thead>
       <tbody>

@@ -5,6 +5,7 @@ import ActionItemsTable2 from '@/app/components/tables/ActionItemsTable2'
 import Calendar from '@/app/components/Calendar'
 import ReasonsToCelebrate from "../components/tables/ReasonsToCelebrateTable";
 import IncompleteOrLate from "../components/tables/IncompleteOrLateTable";
+import Milestones from "../components/tables/MilestonesTable";
 
 const getActionItems = async () => {
   try {
@@ -22,9 +23,25 @@ const getActionItems = async () => {
   }
 };
 
-export default async function Tasks() {
+const getMilestones = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/milestones", {
+      cache: "no-store",
+    });
 
-  const { actionItems } = await getActionItems(),
+    if (!res.ok) {
+      throw new Error("Failed to fetch Milestones");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log("Error loading Milestones: ", error);
+  }
+};
+
+export default async function Tasks() {
+  const { actionItems } = await getActionItems()
+  const { milestones } = await getMilestones(),
     today = new Date();
 
   const actionItemsToCelebrate = actionItems.filter(actionItem => actionItem.completed),
@@ -51,7 +68,7 @@ export default async function Tasks() {
           </div>
         </div>
 
-        <div>
+        <div className="px-3">
           {/* <ActionItemsList /> */}
           {/* <ActionItemsTable actionItems={actionItems} /> */}
           {/* <div className="border border-black rounded-lg"> */}
@@ -69,9 +86,22 @@ export default async function Tasks() {
           <Calendar actionItems={actionItems} />
         </div>
 
-        <div className="flex flex-col px-3">
+        {/* <div className="flex flex-col px-3">
           <h1 className="header-tertiary">Milestones</h1>
-        </div>
+        </div> */}
+        <section className="px-3">
+          <div className="flex items-start mb-4 space-x-1">
+            <h2 className="header-tertiary">Milestones:</h2>
+            <Link href="/tasks/createMilestone">
+              <button className="btn-primary-small">
+                Create Milestone
+              </button>
+            </Link>
+          </div>
+          <div className="mb-6">
+            <Milestones milestones={milestones} />
+          </div>
+        </section>
       </section>
     </main>
   )

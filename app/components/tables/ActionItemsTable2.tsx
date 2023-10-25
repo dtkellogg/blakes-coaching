@@ -13,10 +13,10 @@ export default async function ActionItemsTable2({ actionItems }) {
       </caption> */}
       <thead>
         <tr className="bg-gray-300 text-black">
-          <th className="font-semibold">Title</th>
-          <th className="font-semibold" style={{width: '145px'}}>Deadline</th>
-          <th className="font-semibold">Description</th>
-          <th className="font-semibold" style={{width: '100px'}}>Actions</th>
+          <th className="font-semibold text-left">Title</th>
+          <th className="font-semibold text-left" style={{width: '145px'}}>Deadline</th>
+          <th className="font-semibold text-left">Description</th>
+          <th className="font-semibold text-left" style={{width: '100px'}}>Actions</th>
         </tr>
       </thead>
       <tbody>

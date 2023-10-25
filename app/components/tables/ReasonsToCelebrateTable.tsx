@@ -10,10 +10,10 @@ export default async function ReasonsToCelebrateTable({ actionItems }) {
     <table className="table-fixed divide-y divide-gray-200 w-full">
       <thead>
         <tr className="bg-gray-300 text-black">
-          <th className="">Title</th>
+          <th className="text-left">Title</th>
           {/* <th className="" style={{width: '145px'}}>Deadline</th> */}
           {/* <th className="">Description</th> */}
-          <th className="" style={{width: '66px'}}>Actions</th>
+          <th className="text-left" style={{width: '66px'}}>Actions</th>
         </tr>
       </thead>
       <tbody>
