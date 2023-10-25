@@ -1,10 +1,10 @@
 import Link from "next/link";
 // import ActionItemsList from '@/app/components/ActionItemsList'
-import ActionItemsTable from '@/app/components/ActionItemsTable'
-import ActionItemsTable2 from '@/app/components/ActionItemsTable2'
+import ActionItemsTable from '@/app/components/tables/ActionItemsTable'
+import ActionItemsTable2 from '@/app/components/tables/ActionItemsTable2'
 import Calendar from '@/app/components/Calendar'
-import ReasonsToCelebrate from "../components/ReasonsToCelebrate";
-import IncompleteOrLate from "../components/IncompleteOrLateTable";
+import ReasonsToCelebrate from "../components/tables/ReasonsToCelebrateTable";
+import IncompleteOrLate from "../components/tables/IncompleteOrLateTable";
 
 const getActionItems = async () => {
   try {
@@ -64,7 +64,7 @@ export default async function Tasks() {
           <Calendar actionItems={actionItems} />
         </div>
 
-        <div>
+        <div className="flex flex-col px-3">
           <h1 className="header-tertiary">Milestones</h1>
         </div>
       </section>

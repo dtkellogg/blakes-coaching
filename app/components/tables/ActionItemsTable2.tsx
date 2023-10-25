@@ -1,22 +1,22 @@
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import DeleteActionItemButton from "./DeleteActionItemButton";
-import Tooltip from "./Tooltip";
-import CompletedActionItemButton from "./CompletedActionItemButton";
+import DeleteActionItemButton from "../buttons/DeleteActionItemButton";
+import Tooltip from "../Tooltip";
+import CompletedActionItemButton from "../buttons/CompletedActionItemButton";
 
-export default async function ActionItemsTable({ actionItems }) {
+export default async function ActionItemsTable2({ actionItems }) {
 
   return (
-    <table className="table-fixed border-separate border-spacing-0.5 border border-slate-500">
-      <caption className="caption-bottom text-quaternary">
+    <table className="table-fixed divide-y divide-gray-200">
+      {/* <caption className="caption-bottom text-quaternary">
         Table 1: All Action Items sorted by deadline.
-      </caption>
+      </caption> */}
       <thead>
-        <tr className="bg-gray-400 text-black">
-          <th className="border border-slate-600">Title</th>
-          <th className="border border-slate-600" style={{width: '145px'}}>Deadline</th>
-          <th className="border border-slate-600">Description</th>
-          <th className="border border-slate-600" style={{width: '100px'}}>Actions</th>
+        <tr className="bg-gray-300 text-black">
+          <th className="font-semibold">Title</th>
+          <th className="font-semibold" style={{width: '145px'}}>Deadline</th>
+          <th className="font-semibold">Description</th>
+          <th className="font-semibold" style={{width: '100px'}}>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -24,10 +24,10 @@ export default async function ActionItemsTable({ actionItems }) {
           .sort((a,b) => new Date(a.deadline) - new Date(b.deadline))
           .map(({ _id, title, deadline, description, completed }: any, i: number) => (
           <tr key={i} className="bg-gray-100 text-black" style={{height: '100%'}}>
-            <td className="border border-slate-700"><Tooltip message={title}><span className="line-clamp-1">{title}</span></Tooltip></td>
-            <td className="border border-slate-700">{new Date(`${deadline}`).toUTCString().split(" 00:")[0]}</td>
-            <td className="border border-slate-700"><Tooltip message={description}><span className="line-clamp-1">{description}</span></Tooltip></td>
-            <td className="border border-slate-700 flex" style={{height: '100%'}}>
+            <td className="border-y-2 border-slate-700"><Tooltip message={title}><span className="line-clamp-1">{title}</span></Tooltip></td>
+            <td className="border-y-2 border-slate-700">{new Date(`${deadline}`).toUTCString().split(" 00:")[0]}</td>
+            <td className="border-y-2 border-slate-700"><Tooltip message={description}><span className="line-clamp-1">{description}</span></Tooltip></td>
+            <td className="border-y-2 border-slate-700" style={{height: '100%'}}>
               <div className="flex">
                 <Tooltip message={"Delete"}>
                   <DeleteActionItemButton id={_id} />

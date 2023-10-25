@@ -1,8 +1,8 @@
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import DeleteActionItemButton from "./DeleteActionItemButton";
-import Tooltip from "./Tooltip";
-import CompletedActionItemButton from "./CompletedActionItemButton";
+import DeleteActionItemButton from "../buttons/DeleteActionItemButton";
+import Tooltip from "../Tooltip";
+import CompletedActionItemButton from "../buttons/CompletedActionItemButton";
 
 export default async function IncompleteOrLate({ actionItems }) {
 
