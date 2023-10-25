@@ -22,7 +22,7 @@ export default async function Milestones({ milestones }) {
       {milestones && milestones
         .sort((a,b) => new Date(a.deadline) - new Date(b.deadline))
         .map(({ _id, deadline, description, completed }: any, i: any) => (
-        <section key={_id} className={`bg-primary dark:bg-gray-100 text-white border dark:text-black my-3 px-2 py-3 rounded`} style={{border: `1px solid ${commitActionColors[i].toString()}`}}>
+        <section key={_id} className={`bg-white dark:bg-gray-100 text-primary border dark:text-black my-3 px-2 py-3 rounded`} style={{border: `1px solid ${commitActionColors[i].toString()}`}}>
           <div>
             <span>By </span><span className="font-semibold">{new Date(`${deadline}`).toUTCString().split(" 00:")[0].split(', ')[1]}:</span>
           </div>
