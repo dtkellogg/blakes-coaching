@@ -13,7 +13,7 @@ export default async function ActionItemsTable2({ actionItems }) {
       </caption> */}
       <thead>
         <tr className="bg-gray-300 text-black">
-          <th className="font-semibold text-left">Title</th>
+          <th className="font-semibold text-left" style={{width: '25%'}}>Title</th>
           <th className="font-semibold text-left" style={{width: '145px'}}>Deadline</th>
           <th className="font-semibold text-left">Description</th>
           <th className="font-semibold text-left" style={{width: '75px'}}>Actions</th>

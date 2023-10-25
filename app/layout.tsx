@@ -4,8 +4,14 @@ import { AuthProvider } from "./Providers";
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import { headers } from 'next/headers';
+import { Manrope } from '@next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  weight: '400'
+})
 
 export default function RootLayout({
   children,
@@ -33,7 +39,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className="bg-primary text-white min-h-screen flex flex-col">
+      <body className={`bg-primary text-white min-h-screen flex flex-col ${manrope.className}`}>
         <AuthProvider>
           <Nav />
           {/* <main className={`px-60 pb-4 mb-auto ${urlKeyValue === 'login' || urlKeyValue === '/login/page' || urlKeyValue === 'register' || urlKeyValue === '/register/page' ? 'mt-auto pb-16' : ''}`}> */}
