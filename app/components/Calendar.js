@@ -205,7 +205,7 @@ export default function Calendar({ actionItems }) {
               if (calendarSquare.appts.length !== 0) {
                 return (
                   <li
-                    className="calendar__row--element-with-appts text-gray-500 h-full w-full flex items-start border border-black justify-start flex-col p-1"
+                    className="text-gray-500 h-full w-full flex items-start border border-black justify-start flex-col p-1"
                     style={{borderWidth: '0.5px'}}
                     key={uuid()}
                   >
@@ -218,15 +218,14 @@ export default function Calendar({ actionItems }) {
                     >
                       {calendarSquare.num}
                     </div>
-                    {/* <br /> */}
                     <div
-                      className="calendar__row--appt text-secondary"
+                      className="text-secondary"
                     >
                       {calendarSquare.appts.map((appt) => {
                         return (
                           <div key={uuid()}>
-                            <span className="calendar__element--subject">{appt.title}</span>
-                            {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
+                            <span className="">{appt.title}</span>
+                            {/* <span className="">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                           </div>
                         );
                       })}
@@ -251,7 +250,7 @@ export default function Calendar({ actionItems }) {
               if (calendarSquare.appts.length !== 0) {
                 return (
                   <li
-                    className="calendar__row--element-with-appts text-secondary h-full w-full flex items-start border border-black justify-start flex-col p-1"
+                    className="text-secondary h-full w-full flex items-start border border-black justify-start flex-col p-1"
                     style={{borderWidth: '0.5px'}}
                     key={uuid()}
                   >
@@ -271,15 +270,14 @@ export default function Calendar({ actionItems }) {
                     >
                       {calendarSquare.num}
                     </div> */}
-                    {/* <br /> */}
                     <div
-                      className="calendar__row--appt text-secondary overflow-scroll"
+                      className="text-secondary overflow-scroll"
                     >
                       {calendarSquare.appts.map((appt, i) => {
                         return (
-                          <div key={uuid()} className="calendar__appt">
-                            <span className="calendar__element--subject line-clamp-1">{i+1}. {appt.title}</span>
-                            {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
+                          <div key={uuid()} className="">
+                            <span className="line-clamp-1">{i+1}. {appt.title}</span>
+                            {/* <span className="">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                           </div>
                         );
                       })}
@@ -306,21 +304,20 @@ export default function Calendar({ actionItems }) {
                 return (
                   <li
                     key={uuid()}
-                    className="calendar__row--element-with-appts h-full w-full flex items-start border border-black justify-start flex-col p-1"
+                    className="h-full w-full flex items-start border border-black justify-start flex-col p-1"
                     style={{borderWidth: '0.5px'}}
                   >
                     <div style={{ display: "block", alignSelf: "flex-end" }}>
                       {calendarSquare.num}
                     </div>
-                    {/* <br /> */}
                     <div
-                      className="calendar__row--appt text-secondary overflow-scroll"
+                      className="text-secondary overflow-scroll"
                     >
                       {calendarSquare.appts.map((appt, i) => {
                         return (
-                          <div key={uuid()} className="calendar__appt">
-                            <span className="calendar__element--subject line-clamp-1">{i+1}. {appt.title}</span>
-                            {/* <span className="calendar__element--subject">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
+                          <div key={uuid()} className="">
+                            <span className="line-clamp-1 text-xs">{i+1}. {appt.title}</span>
+                            {/* <span className="">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                           </div>
                         );
                       })}
