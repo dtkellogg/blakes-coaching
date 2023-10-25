@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react"
 import CalendarDaysOfWeek from "./CalendarDaysOfWeek";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { ChevronLeftIcon, ChevronRightIcon, CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import Tooltip from './Tooltip';
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 const { v4: uuid } = require("uuid");
@@ -221,10 +221,13 @@ export default function Calendar({ actionItems }) {
                     <div
                       className="text-secondary"
                     >
-                      {calendarSquare.appts.map((appt) => {
+                      {calendarSquare.appts.map((appt, i) => {
                         return (
                           <div key={uuid()}>
-                            <span className="">{appt.title}</span>
+                            {appt.completed
+                              ? <div className="flex items-center"><CheckCircleIcon className="h-6 w-6 text-tertiary" /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
+                              : <div className="flex items-center"><XCircleIcon className="h-6 w-6" style={{color: "grey"}} /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
+                            }
                             {/* <span className="">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                           </div>
                         );
@@ -275,8 +278,11 @@ export default function Calendar({ actionItems }) {
                     >
                       {calendarSquare.appts.map((appt, i) => {
                         return (
-                          <div key={uuid()} className="">
-                            <span className="line-clamp-1">{i+1}. {appt.title}</span>
+                          <div key={uuid()}>
+                            {appt.completed
+                              ? <div className="flex items-center"><CheckCircleIcon className="h-6 w-6 text-tertiary" /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
+                              : <div className="flex items-center"><XCircleIcon className="h-6 w-6" style={{color: "grey"}} /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
+                            }
                             {/* <span className="">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                           </div>
                         );
@@ -311,12 +317,15 @@ export default function Calendar({ actionItems }) {
                       {calendarSquare.num}
                     </div>
                     <div
-                      className="text-secondary overflow-scroll"
+                      className="text-secondary"
                     >
                       {calendarSquare.appts.map((appt, i) => {
                         return (
-                          <div key={uuid()} className="">
-                            <span className="line-clamp-1 text-xs">{i+1}. {appt.title}</span>
+                          <div key={uuid()}>
+                            {appt.completed
+                              ? <div className="flex items-center"><CheckCircleIcon className="h-6 w-6 text-tertiary" /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
+                              : <div className="flex items-center"><XCircleIcon className="h-6 w-6" style={{color: "grey"}} /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
+                            }
                             {/* <span className="">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                           </div>
                         );
