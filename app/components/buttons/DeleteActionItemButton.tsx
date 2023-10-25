@@ -22,7 +22,7 @@ export default function DeleteActionItemButton({ id }) {
 
   return (
     <button onClick={() => removeActionItem(id)}>
-      <TrashIcon className="h-8 w-8 cursor-pointer text-red-600" />
+      <TrashIcon className="h-6 w-6 cursor-pointer text-red-600" />
     </button>
   )
 }

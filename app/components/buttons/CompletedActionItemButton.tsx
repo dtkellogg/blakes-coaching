@@ -40,8 +40,8 @@ export default function CompletedActionItemButton({ id, title, deadline, descrip
     <button onClick={() => toggleCompleted(id)}>
       {
         completed 
-          ? <CheckCircleIcon className="h-8 w-8 cursor-pointer text-tertiary" />
-          : <XCircleIcon className="h-8 w-8 cursor-pointer" style={{color: "grey"}} />
+          ? <CheckCircleIcon className="h-6 w-6 cursor-pointer text-tertiary" />
+          : <XCircleIcon className="h-6 w-6 cursor-pointer" style={{color: "grey"}} />
       }
     </button>
   )

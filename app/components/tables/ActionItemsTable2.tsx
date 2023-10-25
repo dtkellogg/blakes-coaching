@@ -16,7 +16,7 @@ export default async function ActionItemsTable2({ actionItems }) {
           <th className="font-semibold text-left">Title</th>
           <th className="font-semibold text-left" style={{width: '145px'}}>Deadline</th>
           <th className="font-semibold text-left">Description</th>
-          <th className="font-semibold text-left" style={{width: '100px'}}>Actions</th>
+          <th className="font-semibold text-left" style={{width: '75px'}}>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -34,7 +34,7 @@ export default async function ActionItemsTable2({ actionItems }) {
                 </Tooltip>
                 <Link href={`/tasks/editActionItem/${_id}?title=${title}&deadline=${deadline}&description=${description}`}>
                   <Tooltip message={"Edit"}>
-                    <PencilSquareIcon className="h-8 w-8 cursor-pointer text-green-600" />
+                    <PencilSquareIcon className="h-6 w-6 cursor-pointer text-green-600" />
                   </Tooltip>
                 </Link>
                 <Tooltip message={completed ? "Mark as Incomplete" : "Mark as Complete"}>

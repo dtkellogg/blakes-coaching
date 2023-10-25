@@ -13,7 +13,7 @@ export default async function ReasonsToCelebrateTable({ actionItems }) {
           <th className="text-left">Title</th>
           {/* <th className="" style={{width: '145px'}}>Deadline</th> */}
           {/* <th className="">Description</th> */}
-          <th className="text-left" style={{width: '66px'}}>Actions</th>
+          <th className="text-left" style={{width: '55px'}}>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -31,7 +31,7 @@ export default async function ReasonsToCelebrateTable({ actionItems }) {
                 </Tooltip> */}
                 <Link href={`/tasks/editActionItem/${_id}?title=${title}&deadline=${deadline}&description=${description}`}>
                   <Tooltip message={"Edit"}>
-                    <PencilSquareIcon className="h-8 w-8 cursor-pointer text-green-600" />
+                    <PencilSquareIcon className="h-6 w-6 cursor-pointer text-green-600" />
                   </Tooltip>
                 </Link>
                 <Tooltip message={completed ? "Mark as Incomplete" : "Mark as Complete"}>
