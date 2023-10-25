@@ -27,11 +27,9 @@ export default async function Tasks() {
   const { actionItems } = await getActionItems(),
     today = new Date();
 
-  const actionItemsToCelebrate = actionItems.filter(actionItem => new Date(actionItem.deadline).getTime() < today && actionItem.completed),
+  const actionItemsToCelebrate = actionItems.filter(actionItem => actionItem.completed),
     actionItemsIncompleteOrLate = actionItems.filter(actionItem => new Date(actionItem.deadline).getTime() < today && !actionItem.completed),
-    actionItemsUpcoming = actionItems.filter(actionItem => new Date(actionItem.deadline).getTime() > today)
-
-  console.log('today', today)
+    actionItemsUpcoming = actionItems.filter(actionItem => new Date(actionItem.deadline).getTime() > today && !actionItem.completed)
 
   return (
     <main className="flex flex-col">

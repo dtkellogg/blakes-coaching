@@ -7,13 +7,13 @@ import CompletedActionItemButton from "../buttons/CompletedActionItemButton";
 export default async function ReasonsToCelebrateTable({ actionItems }) {
 
   return (
-    <table className="table-fixed divide-y divide-gray-200">
+    <table className="table-fixed divide-y divide-gray-200 w-full">
       <thead>
         <tr className="bg-gray-300 text-black">
           <th className="">Title</th>
           {/* <th className="" style={{width: '145px'}}>Deadline</th> */}
           {/* <th className="">Description</th> */}
-          <th className="" style={{width: '20px'}}>Actions</th>
+          <th className="" style={{width: '66px'}}>Actions</th>
         </tr>
       </thead>
       <tbody>

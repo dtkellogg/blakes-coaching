@@ -24,7 +24,7 @@
   }
 
   .header-tertiary {
-    @apply text-xl w-max text-quaternary
+    @apply text-base w-max text-quaternary
   }
 
   .input {

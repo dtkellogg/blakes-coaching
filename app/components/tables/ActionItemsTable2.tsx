@@ -7,7 +7,7 @@ import CompletedActionItemButton from "../buttons/CompletedActionItemButton";
 export default async function ActionItemsTable2({ actionItems }) {
 
   return (
-    <table className="table-fixed divide-y divide-gray-200">
+    <table className="table-fixed divide-y divide-gray-200 w-full">
       {/* <caption className="caption-bottom text-quaternary">
         Table 1: All Action Items sorted by deadline.
       </caption> */}
