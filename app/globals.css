@@ -19,6 +19,14 @@
     @apply text-4xl w-max mx-auto text-quaternary
   }
 
+  .header-secondary {
+    @apply text-2xl w-max text-quaternary
+  }
+
+  .header-tertiary {
+    @apply text-xl w-max text-quaternary
+  }
+
   .input {
     @apply shadow-md px-6 py-2 border border-slate-300 text-black
   }

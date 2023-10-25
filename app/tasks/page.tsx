@@ -3,6 +3,8 @@ import Link from "next/link";
 import ActionItemsTable from '@/app/components/ActionItemsTable'
 import ActionItemsTable2 from '@/app/components/ActionItemsTable2'
 import Calendar from '@/app/components/Calendar'
+import ReasonsToCelebrate from "../components/ReasonsToCelebrate";
+import IncompleteOrLate from "../components/IncompleteOrLateTable";
 
 const getActionItems = async () => {
   try {
@@ -25,31 +27,47 @@ export default async function Tasks() {
   const { actionItems } = await getActionItems()
 
   return (
-    <main className="pb-4 mb-auto grid grid-cols-[15rem_1fr_15rem]">
-      <div className="flex flex-col justify-between">
-        <div><h2>Reasons to Celebrate</h2></div>
-        <div><h2>Incomplete or Late</h2></div>
-      </div>
+    <main className="flex flex-col">
+      <h1 className="header-primary mb-4">Tasks</h1>
 
-      <div>
-        <h1 className="header-primary mb-4">Tasks</h1>
-        {/* <ActionItemsList /> */}
-        {/* <ActionItemsTable actionItems={actionItems} /> */}
-        {/* <div className="border border-black rounded-lg"> */}
-        <Link href="/tasks/createActionItem">
-          <button className="btn-primary my-6 w-full">
-            Create Action Item
-          </button>
-        </Link>
-        <div className="overflow-hidden border border-black rounded-md mb-6">
-          <ActionItemsTable2 actionItems={actionItems} />
+      <section className="grid grid-cols-[15rem_1fr_15rem]">
+        <div className="flex flex-col px-3">
+          <div className="flex flex-col">
+            <h2 className="header-tertiary mb-4">Reasons to Celebrate:</h2>
+            <div className="overflow-hidden border border-black rounded-md mb-6">
+              <ReasonsToCelebrate actionItems={actionItems}/>
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <h2 className="header-tertiary mb-4">Incomplete or Late:</h2>
+            <div className="overflow-hidden border border-black rounded-md mb-6">
+              <IncompleteOrLate actionItems={actionItems}/>
+            </div>
+          </div>
         </div>
-        <Calendar actionItems={actionItems} />
-      </div>
 
-      <div>
-        <h1>Milestones</h1>
-      </div>
+        <div>
+          {/* <ActionItemsList /> */}
+          {/* <ActionItemsTable actionItems={actionItems} /> */}
+          {/* <div className="border border-black rounded-lg"> */}
+          <div className="flex items-center mb-4 space-x-6">
+            <h2 className="header-tertiary">Upcoming:</h2>
+            <Link href="/tasks/createActionItem">
+              <button className="btn-primary-small">
+                Create Action Item
+              </button>
+            </Link>
+          </div>
+          <div className="overflow-hidden border border-black rounded-md mb-6">
+            <ActionItemsTable2 actionItems={actionItems} />
+          </div>
+          <Calendar actionItems={actionItems} />
+        </div>
+
+        <div>
+          <h1 className="header-tertiary">Milestones</h1>
+        </div>
+      </section>
     </main>
   )
 }

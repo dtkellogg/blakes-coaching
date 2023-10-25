@@ -4,7 +4,7 @@ import DeleteActionItemButton from "./DeleteActionItemButton";
 import Tooltip from "./Tooltip";
 import CompletedActionItemButton from "./CompletedActionItemButton";
 
-export default async function ReasonsToCelebrate({ actionItems }) {
+export default async function IncompleteOrLate({ actionItems }) {
 
   return (
     <table className="table-fixed divide-y divide-gray-200">
