@@ -24,7 +24,14 @@ const getActionItems = async () => {
 
 export default async function Tasks() {
 
-  const { actionItems } = await getActionItems()
+  const { actionItems } = await getActionItems(),
+    today = new Date();
+
+  const actionItemsToCelebrate = actionItems.filter(actionItem => new Date(actionItem.deadline).getTime() < today && actionItem.completed),
+    actionItemsIncompleteOrLate = actionItems.filter(actionItem => new Date(actionItem.deadline).getTime() < today && !actionItem.completed),
+    actionItemsUpcoming = actionItems.filter(actionItem => new Date(actionItem.deadline).getTime() > today)
+
+  console.log('today', today)
 
   return (
     <main className="flex flex-col">
@@ -35,13 +42,13 @@ export default async function Tasks() {
           <div className="flex flex-col">
             <h2 className="header-tertiary mb-4">Reasons to Celebrate:</h2>
             <div className="overflow-hidden border border-black rounded-md mb-6">
-              <ReasonsToCelebrate actionItems={actionItems}/>
+              <ReasonsToCelebrate actionItems={actionItemsToCelebrate}/>
             </div>
           </div>
           <div className="flex flex-col">
             <h2 className="header-tertiary mb-4">Incomplete or Late:</h2>
             <div className="overflow-hidden border border-black rounded-md mb-6">
-              <IncompleteOrLate actionItems={actionItems}/>
+              <IncompleteOrLate actionItems={actionItemsIncompleteOrLate}/>
             </div>
           </div>
         </div>
@@ -59,7 +66,7 @@ export default async function Tasks() {
             </Link>
           </div>
           <div className="overflow-hidden border border-black rounded-md mb-6">
-            <ActionItemsTable2 actionItems={actionItems} />
+            <ActionItemsTable2 actionItems={actionItemsUpcoming} />
           </div>
           <Calendar actionItems={actionItems} />
         </div>
