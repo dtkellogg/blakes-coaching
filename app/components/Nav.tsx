@@ -19,7 +19,7 @@ export default function Nav() {
   console.log('session', session)
 
   return (
-    <div className="flex items-center justify-between pr-10 margin-auto text-quaternary">
+    <div className="flex items-center justify-between margin-auto text-primary dark:text-quaternary">
       <NavLink href="/">
         <Image
           src="/action-manager.svg"
@@ -30,14 +30,16 @@ export default function Nav() {
           priority
         />
       </NavLink>
-      <section className="space-x-10">
-        <DarkModeButton />
+      <section className="flex items-center space-x-10 translate-x-5">
         <NavLink href="/tasks" className={`hover:text-secondary transition ease-in-out ${(isActive('tasks') || isActive('createActionItem') || isActive('editActionItem')) && 'underline decoration-secondary underline-offset-4'}`}>
           Tasks
         </NavLink>
         <NavLink href="/video" className={`hover:text-secondary transition ease-in-out ${isActive('video') && 'underline decoration-secondary underline-offset-4'}`}>
           Video
         </NavLink>
+      </section>
+      <section className="flex items-center space-x-10 mr-10">
+        <DarkModeButton />
         {session?.user
           ? <button
               onClick={() => signOut()} 

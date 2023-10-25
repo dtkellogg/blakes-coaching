@@ -16,15 +16,15 @@
   }
 
   .header-primary {
-    @apply text-4xl w-max mx-auto text-quaternary
+    @apply text-4xl w-max mx-auto text-primary dark:text-quaternary
   }
 
   .header-secondary {
-    @apply text-2xl w-max text-quaternary
+    @apply text-2xl w-max text-primary dark:text-quaternary
   }
 
   .header-tertiary {
-    @apply text-base w-max text-quaternary
+    @apply text-base w-max text-primary dark:text-quaternary
   }
 
   .input {
