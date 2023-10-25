@@ -30,7 +30,7 @@ export default function Nav() {
           priority
         />
       </NavLink>
-      <section className="flex items-center space-x-10 translate-x-[20%]">
+      <section className="flex items-center space-x-10 translate-x-[15.5%]">
         <NavLink href="/tasks" className={`hover:text-secondary transition ease-in-out ${(isActive('tasks') || isActive('createActionItem') || isActive('editActionItem')) && 'underline decoration-secondary underline-offset-4'}`}>
           Tasks
         </NavLink>

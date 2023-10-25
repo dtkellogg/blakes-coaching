@@ -53,9 +53,9 @@ export default async function Tasks() {
       <h1 className="header-primary mb-4">Tasks</h1>
 
       <section className="grid grid-cols-[15rem_1fr_15rem]">
-        <div className="flex flex-col pl-4 pr-2">
+        <section className="flex flex-col pl-4 pr-2 items-center mb-4">
           <div className="flex flex-col">
-            <h2 className="header-tertiary mb-4">Reasons to Celebrate:</h2>
+            <h2 className="header-tertiary mb-4 leading-7">Reasons to Celebrate:</h2>
             <div className="overflow-hidden border border-black rounded-md mb-6">
               <ReasonsToCelebrate actionItems={actionItemsToCelebrate}/>
             </div>
@@ -66,13 +66,13 @@ export default async function Tasks() {
               <IncompleteOrLate actionItems={actionItemsIncompleteOrLate}/>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="px-2">
+        <section className="px-2">
           {/* <ActionItemsList /> */}
           {/* <ActionItemsTable actionItems={actionItems} /> */}
           {/* <div className="border border-black rounded-lg"> */}
-          <div className="flex items-center mb-4 space-x-6">
+          <div className="flex items-center justify-between mb-4">
             <h2 className="header-tertiary">Upcoming:</h2>
             <Link href="/tasks/createActionItem">
               <button className="btn-primary-small">
@@ -84,13 +84,13 @@ export default async function Tasks() {
             <ActionItemsTable2 actionItems={actionItemsUpcoming} />
           </div>
           <Calendar actionItems={actionItems} />
-        </div>
+        </section>
 
         {/* <div className="flex flex-col px-3">
           <h1 className="header-tertiary">Milestones</h1>
         </div> */}
         <section className="pl-2 pr-4">
-          <div className="flex items-start mb-4 space-x-1">
+          <div className="flex items-start mb-4 justify-between">
             <h2 className="header-tertiary">Milestones:</h2>
             <Link href="/tasks/createMilestone">
               <button className="btn-primary-small">
