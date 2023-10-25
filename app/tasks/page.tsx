@@ -53,7 +53,7 @@ export default async function Tasks() {
       <h1 className="header-primary mb-4">Tasks</h1>
 
       <section className="grid grid-cols-[15rem_1fr_15rem]">
-        <div className="flex flex-col px-3">
+        <div className="flex flex-col pl-4 pr-2">
           <div className="flex flex-col">
             <h2 className="header-tertiary mb-4">Reasons to Celebrate:</h2>
             <div className="overflow-hidden border border-black rounded-md mb-6">
@@ -68,7 +68,7 @@ export default async function Tasks() {
           </div>
         </div>
 
-        <div className="px-3">
+        <div className="px-2">
           {/* <ActionItemsList /> */}
           {/* <ActionItemsTable actionItems={actionItems} /> */}
           {/* <div className="border border-black rounded-lg"> */}
@@ -89,7 +89,7 @@ export default async function Tasks() {
         {/* <div className="flex flex-col px-3">
           <h1 className="header-tertiary">Milestones</h1>
         </div> */}
-        <section className="px-3">
+        <section className="pl-2 pr-4">
           <div className="flex items-start mb-4 space-x-1">
             <h2 className="header-tertiary">Milestones:</h2>
             <Link href="/tasks/createMilestone">

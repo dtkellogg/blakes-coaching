@@ -39,7 +39,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`bg-gray-100 dark:bg-primary text-white min-h-screen flex flex-col ${manrope.className} transition-all duration-700`}>
+      <body className={`bg-gray-100 dark:bg-primary text-primary dark:text-white min-h-screen flex flex-col ${manrope.className} transition-all duration-700`}>
         <Providers>
           <Nav />
           {/* <main className={`px-60 pb-4 mb-auto ${urlKeyValue === 'login' || urlKeyValue === '/login/page' || urlKeyValue === 'register' || urlKeyValue === '/register/page' ? 'mt-auto pb-16' : ''}`}> */}
