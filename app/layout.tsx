@@ -1,5 +1,5 @@
 import './globals.css'
-import { AuthProvider } from "./Providers";
+import Providers from "./Providers";
 // import { Inter } from 'next/font/google'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
@@ -39,15 +39,15 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`bg-primary text-white min-h-screen flex flex-col ${manrope.className}`}>
-        <AuthProvider>
+      <body className={`bg-gray-100 dark:bg-primary text-white min-h-screen flex flex-col ${manrope.className} transition-all duration-700`}>
+        <Providers>
           <Nav />
           {/* <main className={`px-60 pb-4 mb-auto ${urlKeyValue === 'login' || urlKeyValue === '/login/page' || urlKeyValue === 'register' || urlKeyValue === '/register/page' ? 'mt-auto pb-16' : ''}`}> */}
           {/* <main className="px-60 pb-4 mb-auto"> */}
             {children}
           {/* </main> */}
           <Footer />
-        </AuthProvider>
+        </Providers>
       </body>
     </html>
   )

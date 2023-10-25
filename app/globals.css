@@ -12,7 +12,7 @@
   }
 
   .btn-primary-small {
-    @apply py-1 px-2 text-sm bg-secondary text-white rounded-md text-center hover:opacity-70 transition ease-in-out
+    @apply py-1 px-1 text-sm bg-secondary text-white rounded-md text-center hover:opacity-70 transition ease-in-out
   }
 
   .header-primary {

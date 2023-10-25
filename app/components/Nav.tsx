@@ -5,6 +5,7 @@ import { useSession, signOut } from "next-auth/react";
 
 import Image from "next/image";
 import NavLink from "next/link";
+import DarkModeButton from './buttons/DarkModeButton';
 
 export default function Nav() {
   const pathname = usePathname()
@@ -30,6 +31,7 @@ export default function Nav() {
         />
       </NavLink>
       <section className="space-x-10">
+        <DarkModeButton />
         <NavLink href="/tasks" className={`hover:text-secondary transition ease-in-out ${(isActive('tasks') || isActive('createActionItem') || isActive('editActionItem')) && 'underline decoration-secondary underline-offset-4'}`}>
           Tasks
         </NavLink>
