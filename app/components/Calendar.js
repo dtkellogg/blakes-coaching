@@ -225,8 +225,8 @@ export default function Calendar({ actionItems }) {
                         return (
                           <div key={uuid()}>
                             {appt.completed
-                              ? <div className="flex items-center"><CheckCircleIcon className="h-6 w-6 text-tertiary" /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
-                              : <div className="flex items-center"><XCircleIcon className="h-6 w-6" style={{color: "grey"}} /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
+                              ? <div className="flex items-center"><CheckCircleIcon className="h-6 w-6 text-tertiary" style={{maxWidth: '15px', maxHeight: '15px'}} /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
+                              : <div className="flex items-center"><XCircleIcon className="h-6 w-6" style={{color: "grey", maxWidth: '15px', maxHeight: '15px'}} /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
                             }
                             {/* <span className="">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                           </div>
@@ -280,8 +280,8 @@ export default function Calendar({ actionItems }) {
                         return (
                           <div key={uuid()}>
                             {appt.completed
-                              ? <div className="flex items-center"><CheckCircleIcon className="h-6 w-6 text-tertiary" /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
-                              : <div className="flex items-center"><XCircleIcon className="h-6 w-6" style={{color: "grey"}} /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
+                              ? <div className="flex items-center"><CheckCircleIcon className="h-6 w-6 text-tertiary" style={{maxWidth: '15px', maxHeight: '15px'}} /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
+                              : <div className="flex items-center"><XCircleIcon className="h-6 w-6" style={{color: "grey", maxWidth: '15px', maxHeight: '15px'}} /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
                             }
                             {/* <span className="">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                           </div>
@@ -323,8 +323,8 @@ export default function Calendar({ actionItems }) {
                         return (
                           <div key={uuid()}>
                             {appt.completed
-                              ? <div className="flex items-center"><CheckCircleIcon className="h-6 w-6 text-tertiary" /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
-                              : <div className="flex items-center"><XCircleIcon className="h-6 w-6" style={{color: "grey"}} /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
+                              ? <div className="flex items-center"><CheckCircleIcon className="h-6 w-6 text-tertiary" style={{maxWidth: '15px', maxHeight: '15px'}} /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
+                              : <div className="flex items-center"><XCircleIcon className="h-6 w-6" style={{color: "grey", maxWidth: '15px', maxHeight: '15px'}} /><Tooltip message={appt.title}><span className="line-clamp-1 text-xs">{appt.title}</span></Tooltip></div>
                             }
                             {/* <span className="">{appt.title}:</span> <br /> {AMPMTime(appt.startTime)} - {AMPMTime(appt.endTime)}  */}
                           </div>
