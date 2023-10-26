@@ -31,10 +31,10 @@ export default function Nav() {
         />
       </NavLink>
       <section className="flex items-center justify-center space-x-10">
-        <NavLink href="/tasks" className={`hover:text-secondary transition ease-in-out ${(isActive('tasks') || isActive('createActionItem') || isActive('editActionItem')) && 'underline decoration-secondary underline-offset-4'}`}>
+        <NavLink href="/tasks" className={`hover:text-secondary transition ease-in-out ${(isActive('tasks') || isActive('createActionItem') || isActive('editActionItem')) && 'underline decoration-secondary text-secondary underline-offset-4'}`}>
           Tasks
         </NavLink>
-        <NavLink href="/video" className={`hover:text-secondary transition ease-in-out ${isActive('video') && 'underline decoration-secondary underline-offset-4'}`}>
+        <NavLink href="/video" className={`hover:text-secondary transition ease-in-out ${isActive('video') && 'underline decoration-secondary text-secondary underline-offset-4'}`}>
           Video
         </NavLink>
       </section>
