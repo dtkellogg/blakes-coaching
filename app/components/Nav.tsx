@@ -19,7 +19,7 @@ export default function Nav() {
   console.log('session', session)
 
   return (
-    <div className="flex items-center justify-between margin-auto text-primary dark:text-quaternary">
+    <div className="grid grid-cols-3 w-full text-primary dark:text-quaternary">
       <NavLink href="/">
         <Image
           src="/action-manager.svg"
@@ -30,7 +30,7 @@ export default function Nav() {
           priority
         />
       </NavLink>
-      <section className="flex items-center space-x-10 translate-x-[15.5%]">
+      <section className="flex items-center justify-center space-x-10">
         <NavLink href="/tasks" className={`hover:text-secondary transition ease-in-out ${(isActive('tasks') || isActive('createActionItem') || isActive('editActionItem')) && 'underline decoration-secondary underline-offset-4'}`}>
           Tasks
         </NavLink>
@@ -38,7 +38,7 @@ export default function Nav() {
           Video
         </NavLink>
       </section>
-      <section className="flex items-center space-x-10 mr-10">
+      <section className="flex items-center justify-end space-x-10 mr-10">
         <DarkModeButton />
         {session?.user
           ? <button
