@@ -1,8 +1,7 @@
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import DeleteActionItemButton from "../buttons/DeleteActionItemButton";
+import DeleteMilestoneButton from "../buttons/DeleteMilestoneButton";
 import Tooltip from "../Tooltip";
-import CompletedActionItemButton from "../buttons/CompletedActionItemButton";
 
 const commitActionColors = [
   '#33CA59',
@@ -21,13 +20,27 @@ export default async function Milestones({ milestones }) {
     <div>
       {milestones && milestones
         .sort((a,b) => new Date(a.deadline) - new Date(b.deadline))
-        .map(({ _id, deadline, description, completed }: any, i: any) => (
-        <section key={_id} className={`bg-white dark:bg-gray-100 text-primary border dark:text-black my-3 px-2 py-3 rounded`} style={{border: `1px solid ${commitActionColors[i % 8]}`}}>
+        .map(({ _id, deadline, description }: any, i: any) => (
+        <section 
+          key={_id}
+          className={`bg-white dark:bg-gray-100 text-primary border dark:text-black my-3 px-2 py-3 rounded`}
+          style={{border: `1px solid ${commitActionColors[i % 8]}`}}
+        >
           <div>
             <span>By </span><span className="font-semibold">{new Date(`${deadline}`).toUTCString().split(" 00:")[0].split(', ')[1]}:</span>
           </div>
           <div>
             {description}
+          </div>
+          <div className="flex">
+            <Tooltip message={"Delete"}>
+              <DeleteMilestoneButton id={_id} />
+            </Tooltip>
+            <Link href={`/tasks/editMilestone/${_id}?deadline=${deadline}&description=${description}`}>
+              <Tooltip message={"Edit"}>
+                <PencilSquareIcon className="h-6 w-6 cursor-pointer text-green-600" />
+              </Tooltip>
+            </Link>
           </div>
         </section>
       ))}
