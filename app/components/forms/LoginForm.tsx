@@ -43,13 +43,13 @@ export default function LoginForm() {
             onChange={(e) => setEmail(e.target.value)}
             type="text"
             placeholder="Email"
-            className="input"
+            className="input "
           />
           <input
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Password"
-            className="input"
+            className="input "
           />
           <button className="bg-secondary text-white font-bold cursor-pointer px-6 py-2">
             Login

@@ -7,7 +7,7 @@ export default function DeleteMilestoneButton({ id }) {
   const router = useRouter();
 
   const removeMilestone = async (id: string) => {
-    const confirmed = confirm("Are you sure?");
+    const confirmed = confirm("Are you sure? ⚠️Warning: this action is permanent.");
 
     if (confirmed) {
       const res = await fetch(`http://localhost:3000/api/milestones?id=${id}`, {
