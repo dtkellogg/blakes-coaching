@@ -80,7 +80,7 @@ export default async function Tasks() {
               </button>
             </Link>
           </div>
-          <div className="overflow-hidden border border-black rounded-md mb-6">
+          <div className="overflow-hidden overflow-y-scroll border border-black rounded-md mb-6 max-h-[310px]">
             <ActionItemsTable2 actionItems={actionItemsUpcoming} />
           </div>
           <Calendar actionItems={actionItems} />
@@ -98,6 +98,7 @@ export default async function Tasks() {
               </button>
             </Link>
           </div>
+          {/* <div className="mb-6 max-h-[53.75rem] overflow-y-scroll"> */}
           <div className="mb-6">
             <Milestones milestones={milestones} />
           </div>
