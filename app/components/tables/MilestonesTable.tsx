@@ -32,7 +32,7 @@ export default async function Milestones({ milestones }) {
           <div>
             {description}
           </div>
-          <div className="flex">
+          <div className="flex justify-end">
             <Tooltip message={"Delete"}>
               <DeleteMilestoneButton id={_id} />
             </Tooltip>
