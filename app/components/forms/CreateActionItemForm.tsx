@@ -41,7 +41,7 @@ export default function CreateActionItemForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="py-4 my-4 border-t flex flex-col gap-5">
+      <form onSubmit={handleSubmit} className="py-4 my-4 border-t flex flex-col gap-5 w-full">
         <div className="flex flex-col gap-2">
           <label htmlFor="title" className="label">Title:</label>
           <input type="text" id="title" name="title" placeholder="Title" className="input" onChange={(e) => setTitle(e.target.value)} value={title} />

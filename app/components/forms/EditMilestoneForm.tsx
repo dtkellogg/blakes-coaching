@@ -49,7 +49,7 @@ export default function EditActionItemForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="py-4 my-4 border-t flex flex-col gap-5">
+      <form onSubmit={handleSubmit} className="py-4 my-4 border-t flex flex-col gap-5 w-full">
         <div className="flex flex-col gap-2">
           <label htmlFor="deadline" className="label">Deadline:</label>
           <input type="date" id="deadline" name="deadline" placeholder="Deadline" className="input" onChange={(e) => setDeadline(e.target.value)} value={deadline} />
