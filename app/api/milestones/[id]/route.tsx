@@ -12,11 +12,11 @@ export async function DELETE(request: any) {
 
 export async function PUT(request: any, { params }) {
   const { id } = params;
-  const { deadline, description, completed } = await request.json();
+  const { deadline, description, completed, assignedTo, assignedBy } = await request.json();
   console.log(`id: ${id}, description: ${description}, deadline: ${deadline}, completed: ${completed}`);
   try {
     await connectDB();
-    await Milestone.findByIdAndUpdate(id, { deadline, description, completed });
+    await Milestone.findByIdAndUpdate(id, { deadline, description, completed, assignedTo, assignedBy });
     return NextResponse.json({ status: 200 }, { msg: "Milestone updated" });
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {

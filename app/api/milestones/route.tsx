@@ -4,12 +4,12 @@ import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 
 export async function POST(req: any) {
-  const { deadline, description, completed } = await req.json();
-  console.log(deadline, description, completed);
+  const { deadline, description, completed, assignedTo, assignedBy } = await req.json();
+  console.log(deadline, description, completed, assignedTo, assignedBy);
 
   try {
     await connectDB();
-    await Milestone.create({ deadline, description, completed });
+    await Milestone.create({ deadline, description, completed, assignedTo, assignedBy });
 
     return NextResponse.json({
       msg: [`Milestone created successfully`],

@@ -12,7 +12,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useTheme } from "next-themes"
 
 
-
 export default function Nav() {
   const [showMenu, setShowMenu] = useState(false)
   const menuRef = useRef(null)

@@ -1,18 +1,25 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useSession } from "next-auth/react";
+
 
 export default function CreateMilestoneForm() {
+  const { data: session } = useSession();
   // const [title, setTitle] = useState('')
   const [deadline, setDeadline] = useState('')
   const [description, setDescription] = useState('')
+  const [assignedTo, setAssignedTo] = useState('')
+  const [assignedBy, setAssignedBy] = useState('')
   const [error, setError] = useState([]);
   const [success, setSuccess] = useState(false);
   const router = useRouter()
-
+  
   const handleSubmit = async (e: any) => {
     e.preventDefault()
+
+    console.log('assignedTo', assignedTo)
 
     const res = await fetch('../api/milestones', {
       method: 'POST',
@@ -20,7 +27,9 @@ export default function CreateMilestoneForm() {
       body: JSON.stringify({
         // title,
         deadline,
-        description
+        description,
+        assignedBy,
+        assignedTo
       })
     })
 
@@ -38,6 +47,14 @@ export default function CreateMilestoneForm() {
 
     console.log(msg)
   }
+
+  console.log('session.user', session?.user)
+
+  
+  useEffect(() => {
+    setAssignedTo(session?.user.email)
+    setAssignedBy(session?.user.email)
+  }, [session])
 
   return (
     <>
