@@ -1,5 +1,6 @@
 "use client"
 
+import { TrashIcon } from "@heroicons/react/24/outline"
 import { useParams, useRouter, useSearchParams } from "next/navigation"
 import { useState } from "react"
 
@@ -50,6 +51,21 @@ export default function EditActionItemForm() {
     console.log(msg)
   }
 
+  const removeActionItem = async (id: string) => {
+    const confirmed = confirm("Are you sure? ⚠️Warning: this action is permanent.");
+
+    if (confirmed) {
+      const res = await fetch(`http://localhost:3000/api/actionItems?id=${id}`, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        router.refresh()
+        router.push('/tasks')
+      }
+    }
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit} className="py-4 my-4 border-t flex flex-col gap-5 w-full">
@@ -65,8 +81,11 @@ export default function EditActionItemForm() {
           <label htmlFor="description" className="label">Description:</label>
           <textarea id="description" name="description" placeholder="Description" className="input h-32" onChange={(e) => setDescription(e.target.value)} value={description} />
         </div>
+        <button onClick={() => removeActionItem(params.id)} className="btn-primary mt-6 bg-red-600 ">
+          Delete
+        </button>
         <button
-          className="btn-primary mt-3"
+          className="btn-primary mt-0"
           type="submit"
         >
           Submit

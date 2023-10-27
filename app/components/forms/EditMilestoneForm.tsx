@@ -47,6 +47,20 @@ export default function EditActionItemForm() {
     console.log(msg)
   }
 
+  const removeMilestone = async (id: string) => {
+    const confirmed = confirm("Are you sure? ⚠️Warning: this action is permanent.");
+
+    if (confirmed) {
+      const res = await fetch(`http://localhost:3000/api/milestones?id=${id}`, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        router.refresh()
+      }
+    }
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit} className="py-4 my-4 border-t flex flex-col gap-5 w-full">
@@ -58,8 +72,11 @@ export default function EditActionItemForm() {
           <label htmlFor="description" className="label">Description:</label>
           <textarea id="description" name="description" placeholder="Description" className="input h-32" onChange={(e) => setDescription(e.target.value)} value={description} />
         </div>
+        <button onClick={() => removeMilestone(params.id)} className="btn-primary mt-6 bg-red-600 ">
+          Delete
+        </button>
         <button
-          className="btn-primary mt-3"
+          className="btn-primary"
           type="submit"
         >
           Submit
