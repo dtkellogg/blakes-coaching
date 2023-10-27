@@ -9,6 +9,7 @@ import NavLink from "next/link";
 import DarkModeButton from './buttons/DarkModeButton';
 import Tooltip from './Tooltip';
 import { useState } from 'react';
+import { useTheme } from "next-themes"
 
 export default function Nav() {
   const [showMenu, setShowMenu] = useState(false)
@@ -17,6 +18,9 @@ export default function Nav() {
     // console.log(`pathname: ${pathname.split('/')}`)
     return pathname?.split('/')[1] === path
   }
+  const { systemTheme, theme, setTheme } = useTheme()
+  const currentTheme = theme === "system" ? systemTheme : theme
+
 
   const { data: session } = useSession();
 
@@ -24,6 +28,13 @@ export default function Nav() {
 
   const toggleMenu = () => {
     setShowMenu(!showMenu)
+  }
+
+  const toggleDarkMode = () => {
+    // setTheme('light')
+    currentTheme === "dark" 
+      ? setTheme('light')
+      : setTheme('dark')
   }
 
   return (
@@ -50,13 +61,23 @@ export default function Nav() {
         <span>{session?.user && session?.user.name}</span>
         <Tooltip message={"Settings"}>
           <Cog6ToothIcon
-            className="h-8 w-8 cursor-pointer text-gray-900"
+            className="h-8 w-8 cursor-pointer text-gray-900 dark:text-quaternary"
             onClick={() => (toggleMenu())}
           />
         </Tooltip>
-        <ul className={`${showMenu ? 'block' : 'hidden'} absolute top-20 flex flex-col justify-end border border-black rounded-lg p-4 space-y-3 z-[99]`}>
-          <li><DarkModeButton /></li>
-          <li>
+        <ul 
+          className={`${showMenu ? 'block' : 'hidden'} absolute top-20 flex flex-col justify-end border border-black rounded-lg p-2 space-y-3 z-[99] bg-white`}
+          // onBlur={() => (toggleMenu())}
+        >
+          {/* <li><DarkModeButton /></li> */}
+          <li className="hover:cursor-pointer">
+            <label className="relative flex justify-between items-center text-black hover:text-secondary hover:cursor-pointer">
+              <input type="checkbox" className="absolute left-1/2 -translate-x-1/2 w-full h-full peer appearance-none rounded-md" onClick={() => (toggleDarkMode())}/>
+              <span className="w-8 h-5 flex items-center flex-shrink-0 mr-4 p-1 bg-gray-300 rounded-full duration-300 ease-in-out peer-checked:bg-green-400 after:w-4 after:h-4 after:bg-white after:rounded-full after:shadow-md after:duration-300 peer-checked:after:translate-x-2"></span>
+              Dark Mode
+            </label>
+          </li>
+          <li className="text-black text-end">
             {session?.user
               ? <button
                   onClick={() => signOut()} 
