@@ -20,6 +20,14 @@ const actionItemSchema = new Schema(
       type: Date,
       required: [true, "Deadline is required."],
     },
+    assignedTo: {
+      type: String,
+      required: [true, "Assigned user required."],
+    },
+    assignedBy: {
+      type: String,
+      required: [true, "Assigned by user required."],
+    },
     completed: {
       type: Boolean,
       default: false

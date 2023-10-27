@@ -4,12 +4,12 @@ import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 
 export async function POST(req: any) {
-  const { title, deadline, description, completed } = await req.json();
-  console.log(title, deadline, description, completed);
+  const { title, deadline, description, completed, assignedTo, assignedBy } = await req.json();
+  console.log(title, deadline, description, completed, assignedTo, assignedBy);
 
   try {
     await connectDB();
-    await ActionItem.create({ title, deadline, description, completed });
+    await ActionItem.create({ title, deadline, description, completed, assignedTo, assignedBy });
 
     return NextResponse.json({
       msg: [`Action Item '${title}' created successfully`],

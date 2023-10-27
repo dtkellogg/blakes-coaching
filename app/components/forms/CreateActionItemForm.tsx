@@ -1,12 +1,18 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useSession } from "next-auth/react";
+
 
 export default function CreateActionItemForm() {
+  const { data: session } = useSession();
+
   const [title, setTitle] = useState('')
   const [deadline, setDeadline] = useState('')
   const [description, setDescription] = useState('')
+  const [assignedTo, setAssignedTo] = useState('')
+  const [assignedBy, setAssignedBy] = useState('')
   const [error, setError] = useState([]);
   const [success, setSuccess] = useState(false);
   const router = useRouter()
@@ -20,7 +26,9 @@ export default function CreateActionItemForm() {
       body: JSON.stringify({
         title,
         deadline,
-        description
+        description,
+        assignedBy,
+        assignedTo
       })
     })
 
@@ -38,6 +46,11 @@ export default function CreateActionItemForm() {
 
     console.log(msg)
   }
+
+  useEffect(() => {
+    setAssignedTo(session?.user.email)
+    setAssignedBy(session?.user.email)
+  }, [session])
 
   return (
     <>
