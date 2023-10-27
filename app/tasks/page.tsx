@@ -98,8 +98,8 @@ export default async function Tasks() {
               </button>
             </Link>
           </div>
-          {/* <div className="mb-6 max-h-[53.75rem] overflow-y-scroll"> */}
-          <div className="mb-6">
+          <div className="mb-6 max-h-[67.25rem] overflow-y-scroll">
+          {/* <div className="mb-6"> */}
             <Milestones milestones={milestones} />
           </div>
         </section>
