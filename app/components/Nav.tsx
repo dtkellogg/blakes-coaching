@@ -59,12 +59,12 @@ export default function Nav() {
       </section>
       <section className="flex items-center justify-end space-x-5 mr-10 relative">
         <span>{session?.user && session?.user.name}</span>
-        <Tooltip message={"Settings"}>
+        {/* <Tooltip message={"Settings"}> */}
           <Cog6ToothIcon
             className="h-8 w-8 cursor-pointer text-gray-900 dark:text-quaternary"
             onClick={() => (toggleMenu())}
           />
-        </Tooltip>
+        {/* </Tooltip> */}
         <ul 
           className={`${showMenu ? 'block' : 'hidden'} absolute top-20 flex flex-col justify-end border border-black rounded-lg p-2 space-y-3 z-[99] bg-white`}
           // onBlur={() => (toggleMenu())}
